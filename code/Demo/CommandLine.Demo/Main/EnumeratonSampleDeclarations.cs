@@ -1,12 +1,13 @@
 ﻿namespace SA.Test.CommandLine.Main {
     using SA.Universal.Enumerations;
+    using Application = System.Windows.Application;
 
     class Nameset : IStringAttribute {
         public Nameset() {
-            dictionary = System.Windows.Application.Current.MainWindow.Resources;
+            dictionary = Application.Current?.MainWindow?.Resources;
         } //Nameset
         (string name, string description) IStringAttribute.this[string option] =>
-            ((string)dictionary[option], (string)dictionary[$"{option}D"]);
+            ((string)dictionary?[option], (string)dictionary?[$"{option}D"]);
         readonly System.Windows.ResourceDictionary dictionary;
     } //class Nameset
 
