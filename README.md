@@ -19,4 +19,4 @@ Covered topics:
 
 ## Under development
 
-<[Demo application](articles/demo.webp>
+[Demo application](articles/demo.webp)
