@@ -18,6 +18,8 @@
 
         public WindowMain() {
             InitializeComponent();
+            Agnostic.UI.AdvancedApplicationBase app = Agnostic.UI.AdvancedApplicationBase.Current;
+            app.Localize(new System.Globalization.CultureInfo("ru-RU"));
             buttonParse.Click += (_, _) => Parse();
             buttonDocumentation.Click += (_, _) => documentation.ShowDocumentation(this);
             PreviewKeyDown += (_, eventArgs) => {

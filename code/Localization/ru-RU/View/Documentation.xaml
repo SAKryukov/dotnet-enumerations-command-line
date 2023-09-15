@@ -1,0 +1,27 @@
+﻿<FrameworkContentElement x:Class="SA.Test.CommandLine.View.WindowDocumentation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:enum="clr-namespace:System;assembly=netstandard"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <FrameworkContentElement.Resources>
+        <enum:String x:Key="InputDirectory">Входная директория</enum:String>
+        <enum:String x:Key="InputDirectoryD">Директория, из которой берутся входные файлы</enum:String>
+        <enum:String x:Key="OutputDirectory">Выходная директория</enum:String>
+        <enum:String x:Key="OutputDirectoryD">Директория, в которую должны помещаться выходные файлы</enum:String>
+        <enum:String x:Key="InputFileMask">Маска входного файла</enum:String>
+        <enum:String x:Key="InputFileMaskD">Файловая маска для входного файла; по умолчанию «*.opus»</enum:String>
+        <enum:String x:Key="ForceOutputFormat">Выходной формат</enum:String>
+        <enum:String x:Key="ForceOutputFormatD">Формат выходного файла, применяемый независимо от форматов входных файлов; по умолчанию SVG</enum:String>
+        <enum:String x:Key="ConfigurationFile">Имя конфигурационного файла</enum:String>
+        <enum:String x:Key="ConfigurationFileD">Имя конфигурационного файла; по умолчанию «configuration.xml»</enum:String>
+        <enum:String x:Key="LogFile">"Имя журнального файла</enum:String>
+        <enum:String x:Key="LogFileD">Имя журнального файла; по умолчанию «application.log.txt»</enum:String>
+        <enum:String x:Key="Default">По умолчанию</enum:String>
+        <enum:String x:Key="DefaultD">Если опция задана, все используются все опции по умолчанию</enum:String>
+        <enum:String x:Key="Recursive">Рекурсивно</enum:String>
+        <enum:String x:Key="RecursiveD">Если опция задана, файлы входная директория ищутся рекурсивно</enum:String>
+        <enum:String x:Key="CreateOutputDirectory">Создать выходную директорию</enum:String>
+        <enum:String x:Key="CreateOutputDirectoryD">Опция определяет, что выходная директоруя создаётся; по умолчанию true</enum:String>
+        <enum:String x:Key="Quiet">«Молчаливо»</enum:String>
+        <enum:String x:Key="QuietD">Если опция задана, вывод текста на консоль не производится; по умолчанию false</enum:String>
+    </FrameworkContentElement.Resources>
+</FrameworkContentElement>

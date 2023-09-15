@@ -18,10 +18,13 @@
         <enum:String x:Key="ConfigurationFileD">Configuration File Name; default: configuration.xml</enum:String>
         <enum:String x:Key="LogFile">"Log File Name</enum:String>
         <enum:String x:Key="LogFileD">Log File Name; default: application.log.txt</enum:String>
+        <enum:String x:Key="Default">Default</enum:String>
         <enum:String x:Key="DefaultD">Use all options by default</enum:String>
+        <enum:String x:Key="Recursive">Recursive</enum:String>
         <enum:String x:Key="RecursiveD">Traverse input directory recursiverly</enum:String>
         <enum:String x:Key="CreateOutputDirectory">Create Output Directory</enum:String>
         <enum:String x:Key="CreateOutputDirectoryD">Specify if the output directory should be created; default: true</enum:String>
+        <enum:String x:Key="Quiet">Quiet</enum:String>
         <enum:String x:Key="QuietD">No console output; default: false</enum:String>
         
     </Window.Resources>
