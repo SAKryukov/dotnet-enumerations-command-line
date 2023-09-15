@@ -3,12 +3,12 @@
     using Application = System.Windows.Application;
 
     class Nameset : IStringAttribute {
-        public Nameset() {
-            dictionary = Application.Current?.MainWindow?.Resources;
-        } //Nameset
-        (string name, string description) IStringAttribute.this[string option] =>
-            ((string)dictionary?[option], (string)dictionary?[DefinitionSet.ResourceKey(option)]);
-        readonly System.Windows.ResourceDictionary dictionary;
+        (string name, string description) IStringAttribute.this[string option] {
+            get {
+                System.Windows.ResourceDictionary dictionary = Application.Current?.MainWindow.Resources;
+                return ((string)dictionary?[option], (string)dictionary?[DefinitionSet.ResourceKey(option)]);
+            } //get this
+        } //this
     } //class Nameset
 
     [DisplayName(typeof(Nameset))]

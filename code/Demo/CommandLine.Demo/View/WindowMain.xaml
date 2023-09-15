@@ -7,6 +7,26 @@
         SizeToContent="Height"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Window.Resources>
+        <system:String x:Key="InputDirectory">Input Directory</system:String>
+        <system:String x:Key="InputDirectoryD">Directory where the input files are taken</system:String>
+        <system:String x:Key="OutputDirectory">Output Directory</system:String>
+        <system:String x:Key="OutputDirectoryD">Directory where the output files should be place</system:String>
+        <system:String x:Key="InputFileMask">Input File Mask</system:String>
+        <system:String x:Key="InputFileMaskD">Filename pattern for input files; default: *.opus</system:String>
+        <system:String x:Key="ForceOutputFormat">Force Output Format</system:String>
+        <system:String x:Key="ForceOutputFormatD">Use specified output file formal regardless of the input file format; default: SVG</system:String>
+        <system:String x:Key="ConfigurationFile">Configuration File Name</system:String>
+        <system:String x:Key="ConfigurationFileD">Configuration File Name; default: configuration.xml</system:String>
+        <system:String x:Key="LogFile">"Log File Name</system:String>
+        <system:String x:Key="LogFileD">Log File Name; default: application.log.txt</system:String>
+        <system:String x:Key="Default">Default</system:String>
+        <system:String x:Key="DefaultD">Use all options by default</system:String>
+        <system:String x:Key="Recursive">Recursive</system:String>
+        <system:String x:Key="RecursiveD">Traverse input directory recursiverly</system:String>
+        <system:String x:Key="CreateOutputDirectory">Create Output Directory</system:String>
+        <system:String x:Key="CreateOutputDirectoryD">Specify if the output directory should be created; default: true</system:String>
+        <system:String x:Key="Quiet">Quiet</system:String>
+        <system:String x:Key="QuietD">No console output; default: false</system:String>
         <Thickness x:Key="paddingBottom">0 6 0 0</Thickness>
         <Thickness x:Key="paddingOuter">12 0 12 6</Thickness>
         <Thickness x:Key="paddingButton">12 0 12 2</Thickness>

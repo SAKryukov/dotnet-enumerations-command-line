@@ -9,12 +9,12 @@ namespace SA.Plugin.Localization {
     class Implementation : IApplicationSatelliteAssembly {
 
         internal Implementation() {
-            Test.CommandLine.View.WindowDocumentation documentation = new();
+            Test.CommandLine.View.WindowMain documentation = new();
             resourceDictionary = documentation.Resources;
         } //Implementation
 
         ResourceDictionary IApplicationSatelliteAssembly.this[string fullTypeName] => resourceDictionary;
-        ResourceDictionary IApplicationSatelliteAssembly.ApplicationResources => null;
+        ResourceDictionary IApplicationSatelliteAssembly.ApplicationResources => resourceDictionary;
 
         readonly ResourceDictionary resourceDictionary;
 

@@ -18,8 +18,14 @@
 
         public WindowMain() {
             InitializeComponent();
-            Agnostic.UI.AdvancedApplicationBase app = Agnostic.UI.AdvancedApplicationBase.Current;
-            app.Localize(new System.Globalization.CultureInfo("ru-RU"));
+            void Localize() {
+                Agnostic.UI.AdvancedApplicationBase app = Agnostic.UI.AdvancedApplicationBase.Current;
+                string[] args = Environment.GetCommandLineArgs();
+                if (args.Length > 1)
+                    app.Localize(new System.Globalization.CultureInfo(args[1]));
+            } //Localize
+            Localize();
+            documentation = new();
             buttonParse.Click += (_, _) => Parse();
             buttonDocumentation.Click += (_, _) => documentation.ShowDocumentation(this);
             PreviewKeyDown += (_, eventArgs) => {
@@ -102,7 +108,7 @@
         } //Parse
 
         readonly string pipeName, samplerName;
-        readonly WindowDocumentation documentation = new();
+        readonly WindowDocumentation documentation;
 
     } //class WindowMain
 

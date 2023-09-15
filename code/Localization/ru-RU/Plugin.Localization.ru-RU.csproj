@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <OutputPath>$(OutputPath)\ru-RU</OutputPath>
+    <AssemblyName>CommandLine.Demo.resources</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

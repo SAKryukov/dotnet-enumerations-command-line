@@ -6,6 +6,7 @@
             MAINVIEW mainWindow = new();
             if (mainWindow is IExceptionPresenter exceptionPresenter)
                 base.exceptionPresenter = exceptionPresenter;
+            MainWindow = mainWindow;
             return mainWindow;
         } //CreateMainWindow
     } //class AdvancedApplication

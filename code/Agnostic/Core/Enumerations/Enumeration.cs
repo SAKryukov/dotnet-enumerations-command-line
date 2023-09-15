@@ -139,7 +139,7 @@ namespace SA.Universal.Enumerations {
         delegate void BuildAction();
 
         static void BuildEnumerationCollection() {
-            if (enumerationCollection != null) return; //SA???
+            if (enumerationCollection != null) return;
             BuildEnumerationCollectionCore();
         } //BuildEnumerationCollection
 
@@ -193,7 +193,7 @@ namespace SA.Universal.Enumerations {
             /// If nobody calls GetIntegerIndexFromEnumValue, IndexDictionary remains null
         /// </summary>
         static void BuildIndexDictionary() {
-            if (indexDictionary != null) return; //SA???
+            if (indexDictionary != null) return;
             BuildIndexDictionaryCore();
         } //BuildIndexDictionary
 
