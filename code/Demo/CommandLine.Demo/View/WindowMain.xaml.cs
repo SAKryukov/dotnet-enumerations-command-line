@@ -27,7 +27,7 @@
                     Parse();
                 else if (eventArgs.Key == Key.F1)
                     documentation.ShowDocumentation(this);
-            }; //KeyDown
+            }; //PreviewKeyDown
             string name = System.Reflection.Assembly.GetEntryAssembly().Location;
             string[] files = Directory.GetFiles(Path.GetDirectoryName(name), Main.DefinitionSet.MaskSampler(Path.GetFileNameWithoutExtension(name), Path.GetExtension(name)));
             foreach (string file in files)

@@ -2,13 +2,14 @@
     using System;
     using System.ComponentModel;
     using System.Windows;
+    using System.Windows.Controls;
     using CultureInfo = System.Globalization.CultureInfo;
     using CultureList = System.Collections.Generic.List<System.Globalization.CultureInfo>;
     using Keyboard = System.Windows.Input.Keyboard;
     using StringList = System.Collections.Generic.List<string>;
     using AdvancedApplicationBase = Agnostic.UI.AdvancedApplicationBase;
     using ApplicationSatelliteAssemblyIndex = Agnostic.UI.ApplicationSatelliteAssemblyIndex;
-    using ComboBox = System.Windows.Controls.ComboBox;
+    using Key = System.Windows.Input.Key;
 
     public partial class WindowDocumentation : Window {
 
@@ -16,7 +17,15 @@
             InitializeComponent();
             cultures = PopulateCultures();
             BuildDocumentation();
-            buttonCopy.Click += (_, _) => comboBoxCulture.SelectedItem = 0;
+            buttonCopy.Click += (_, _) => ImplementCopy();
+            PreviewKeyDown += (_, eventArgs) => {
+                if ((eventArgs.Key == Key.C) &&
+                (Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl)))
+                    ImplementCopy();
+            }; //PreviewKeyDown
+            buttonCopy.IsEnabled = false;
+            treeView.SelectedItemChanged += (sender, _) =>
+                buttonCopy.IsEnabled = (sender as TreeView).SelectedItem != null;
         } //WindowDocumentation
 
         CultureInfo[] PopulateCultures() {
@@ -38,6 +47,12 @@
             return list.ToArray();
         } //PopulateCultures
 
+        void ImplementCopy() {
+            string value = treeView.SelectedItem?.ToString();
+            if (!string.IsNullOrEmpty(value))
+                Clipboard.SetText(value);
+        } //ImplementCopy
+
         void BuildDocumentation() {
             Universal.Enumerations.Enumeration<Main.SwitchOption> switches = new(refresh: true);
             Universal.Enumerations.Enumeration<Main.StringOption> values = new(refresh: true);
@@ -51,7 +66,7 @@
             treeViewItemValues.ItemsSource = stringValues;
         } //BuildDocumentation
 
-        void ShowOption<ENUM>(StringList list, Universal.Enumerations.EnumerationItem<ENUM> option, bool isSwitch = false) {
+        static void ShowOption<ENUM>(StringList list, Universal.Enumerations.EnumerationItem<ENUM> option, bool isSwitch = false) {
             list.Add(Main.DefinitionSet.Documentation.FormatName(option.Name, option.AbbreviatedName == option.Name, isSwitch: isSwitch));
             if (option.AbbreviatedName != option.Name)
                 list.Add(Main.DefinitionSet.Documentation.FormatName(option.AbbreviatedName, true, isSwitch: isSwitch));
@@ -78,7 +93,7 @@
             ShowDialog();
         } //ShowDocumentation
 
-        CultureInfo[] cultures;
+        readonly CultureInfo[] cultures;
 
     } //class WindowDocumentation
 
