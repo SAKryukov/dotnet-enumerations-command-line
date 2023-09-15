@@ -30,6 +30,7 @@
         <Thickness x:Key="paddingBottom">0 6 0 0</Thickness>
         <Thickness x:Key="paddingOuter">12 0 12 6</Thickness>
         <Thickness x:Key="paddingButton">12 0 12 2</Thickness>
+        <Thickness x:Key="paddingBorderStack">12 0 0 2</Thickness>
         <Thickness x:Key="stackMargin">0 12 0 0</Thickness>
         <system:Double x:Key="splitterSize">10</system:Double>
         <Style TargetType="CheckBox">
@@ -88,7 +89,7 @@
                             -R /Q F1 /C+ -InputDirectory: -qwerty:*.wepb /Q F1 F2 /InputFileMask:*.webm /Q+ -R- /LogFile:"my long log file name.Log.txt" /OutputDirectory:\sa\media -/OutputDirectory:.
                         </TextBox>
                     </Border>
-                    <Border Grid.Column="1" Padding="10 0 10 10">
+                    <Border Grid.Column="1" Padding="{StaticResource paddingBorderStack}">
                         <StackPanel>
                             <TextBlock>Case Sensitive:</TextBlock>
                             <CheckBox x:Name="checkBoxCaseSensitiveKeys" Margin="{StaticResource stackMargin}">_Keys</CheckBox>
