@@ -169,8 +169,7 @@ namespace SA.Agnostic.Enumerations {
                     AbbreviationAttribute attr = (AbbreviationAttribute)attributes[0];
                     abbreviationLength = attr.AbbreviationLength;
                 } //if Abbreviation works
-                string displayName = GetDisplayName(field);
-                string description = GetDescription(field);
+                (string displayName, string description) = GetDisplay(type, field);
                 list.Add(new EnumerationItem<ENUM>(name, abbreviationLength, displayName, description, currentIndex, objValue, enumValue));
                 currentIndex++;
             } //loop
@@ -178,19 +177,23 @@ namespace SA.Agnostic.Enumerations {
             collectionLength = (Cardinal)enumerationCollection.Length;
         } //BuildEnumerationCollectionCore
 
-        static string GetDisplayName(FieldInfo field) {
-            string value = StringAttributeUtility.ResolveValue<DisplayNameAttribute>(field, true);
-            if (string.IsNullOrEmpty(value))
-                value = field.Name;
-            return value;
-        } //GetDisplayName
-        static string GetDescription(FieldInfo field) {
-            return StringAttributeUtility.ResolveValue<DescriptionAttribute>(field, false);
-        } //GetDescription
+        static (string name, string description) GetDisplay(Type type, FieldInfo field) {
+            (string displayName, string description) =
+                DisplayTextProviderAttribute.Resolve(type, field);
+            string finalDisplayName = DisplayNameAttribute.Resolve(field);
+            if (finalDisplayName == null)
+                finalDisplayName = displayName;
+            if (finalDisplayName == null)
+                finalDisplayName = field.Name;
+            string finalDescription = DescriptionAttribute.Resolve(field);
+            if (finalDescription == null)
+                finalDescription = description;
+            return (finalDisplayName, finalDescription);
+        } //GetDisplay
 
         /// <summary>
         /// BuildIndexDictionary only used to support EnumerationIndexedArray via GetIntegerIndexFromEnumValue;
-            /// If nobody calls GetIntegerIndexFromEnumValue, IndexDictionary remains null
+        /// If nobody calls GetIntegerIndexFromEnumValue, IndexDictionary remains null
         /// </summary>
         static void BuildIndexDictionary() {
             if (indexDictionary != null) return;

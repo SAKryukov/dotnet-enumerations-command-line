@@ -24,7 +24,7 @@
         <system:String x:Key="Recursive">Рекурсивно</system:String>
         <system:String x:Key="RecursiveD">Если опция задана, файлы входная директория ищутся рекурсивно</system:String>
         <system:String x:Key="CreateOutputDirectory">Создать выходную директорию</system:String>
-        <system:String x:Key="CreateOutputDirectoryD">Опция определяет, что выходная директоруя создаётся; по умолчанию true</system:String>
+        <system:String x:Key="CreateOutputDirectoryD">Опция определяет, что выходная директоруя создаётся, если она отсутствует; по умолчанию true</system:String>
         <system:String x:Key="Quiet">«Молчаливо»</system:String>
         <system:String x:Key="QuietD">Если опция задана, вывод текста на консоль не производится; по умолчанию false</system:String>
     </FrameworkContentElement.Resources>

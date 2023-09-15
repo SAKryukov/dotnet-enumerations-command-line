@@ -24,7 +24,7 @@
         <system:String x:Key="Recursive">Recursive</system:String>
         <system:String x:Key="RecursiveD">Traverse input directory recursiverly</system:String>
         <system:String x:Key="CreateOutputDirectory">Create Output Directory</system:String>
-        <system:String x:Key="CreateOutputDirectoryD">Specify if the output directory should be created; default: true</system:String>
+        <system:String x:Key="CreateOutputDirectoryD">Specify if the output directory should be created if it is not available; default: true</system:String>
         <system:String x:Key="Quiet">Quiet</system:String>
         <system:String x:Key="QuietD">No console output; default: false</system:String>
         <Thickness x:Key="paddingBottom">0 6 0 0</Thickness>

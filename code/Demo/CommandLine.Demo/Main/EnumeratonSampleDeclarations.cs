@@ -11,8 +11,7 @@
         } //this
     } //class Nameset
 
-    [DisplayName(typeof(Nameset))]
-    [Description(typeof(Nameset))]
+    [DisplayTextProvider(typeof(Nameset))]
     enum StringOption {
         [Abbreviation(1)]
         InputDirectory,
@@ -26,8 +25,7 @@
         LogFile,
     } //enum StringOption
 
-    [DisplayName(typeof(Nameset))]
-    [Description(typeof(Nameset))]
+    [DisplayTextProvider(typeof(Nameset))]
     enum SwitchOption {
         Default,
         [Abbreviation(1)]

@@ -26,8 +26,6 @@ namespace SA.Agnostic.Enumerations {
             this.name = name;
             this.description = description;
             this.displayName = displayName;
-            if (string.IsNullOrEmpty(this.displayName))
-                this.displayName = name;
             this.index = index;
             this.value = value;
             this.enumValue = enumValue;

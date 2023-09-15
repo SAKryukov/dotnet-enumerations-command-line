@@ -9,14 +9,17 @@
 */
 
 namespace SA.Agnostic.Enumerations {
+/*
     using System;
     using System.Reflection;
     using StringBuilder = System.Text.StringBuilder;
+*/
 
     public interface IStringAttribute {
         (string name, string description) this[string name] { get; }
     } //interface IStringAttribute
 
+/*
     /// <summary>
     /// Utility class used to extract Display Name and Description information for enumeration members from enumeration metadata
     /// based on DisplayNameAttribute and DescriptionAttribute
@@ -98,7 +101,6 @@ namespace SA.Agnostic.Enumerations {
             } //loop
             return sb.ToString();
         } //GetFlaggedDisplayName
-
         static string ResolveValue<ATTRIBUTE_TYPE>(object[] attributes, string memberName, bool isName) where ATTRIBUTE_TYPE : StringAttribute {
             if (attributes == null) return null;
             if (attributes.Length < 1) return null;
@@ -127,5 +129,6 @@ namespace SA.Agnostic.Enumerations {
         #endregion implementation
 
     } //class StringAttributeUtility
+*/
 
 }
