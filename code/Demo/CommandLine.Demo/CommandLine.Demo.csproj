@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>SA.Test.CommandLine</RootNamespace>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>$(TargetFramework)-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Agnostic\Core\Agnostic.Core.csproj" />
+    <ProjectReference Include="..\..\Agnostic\Ui\Agnostic.UI.csproj" />
+  </ItemGroup>
+
+</Project>

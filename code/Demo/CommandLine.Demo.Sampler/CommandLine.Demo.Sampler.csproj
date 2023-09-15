@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>SA.Test.CommandLine</RootNamespace>
+    <OutputType>WinExe</OutputType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\CommandLine.Demo\Main\DefinitionSet.cs" Link="DefinitionSet.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Agnostic\Core\Agnostic.Core.csproj" />
+  </ItemGroup>
+
+</Project>
