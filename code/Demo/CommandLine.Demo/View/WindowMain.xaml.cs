@@ -17,7 +17,7 @@
     public partial class WindowMain : Window {
 
         public WindowMain() {
-            InitializeComponent();            
+            InitializeComponent();
             buttonParse.Click += (_, _) => Parse();
             buttonDocumentation.Click += (_, _) => documentation.ShowDocumentation(this);
             PreviewKeyDown += (_, eventArgs) => {

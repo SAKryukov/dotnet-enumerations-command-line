@@ -43,21 +43,21 @@ namespace SA.Universal.Enumerations {
         /// <param name="value">Value of the type of any enumeration type</param>
         /// <returns>Description; if Description is not resolved, returns null</returns>
         public static string GetDescription(Enum value) {
-            return ResolveValue<DescriptionAttribute>(value.GetType().GetField(value.ToString()));
+            return ResolveValue<DescriptionAttribute>(value.GetType().GetField(value.ToString()), false);
         } //GetDescription
 
         /// <summary>
         /// Used internally to generate a container of EnumerationItem instances used for iteration through enumeration values
         /// </summary>
         /// <typeparam name="ATTRIBUTE_TYPE">DisplayNameAttribute and DescriptionAttribute</typeparam>
-        internal static string ResolveValue<ATTRIBUTE_TYPE>(FieldInfo field) where ATTRIBUTE_TYPE : StringAttribute {
+        internal static string ResolveValue<ATTRIBUTE_TYPE>(FieldInfo field, bool isName) where ATTRIBUTE_TYPE : StringAttribute {
             if (field == null)
                 return null;
-            string value = ResolveValue<ATTRIBUTE_TYPE>(field.GetCustomAttributes(typeof(ATTRIBUTE_TYPE), false), field.Name);
+            string value = ResolveValue<ATTRIBUTE_TYPE>(field.GetCustomAttributes(typeof(ATTRIBUTE_TYPE), false), field.Name, isName);
             if (!string.IsNullOrEmpty(value))
                 return value;
             //field attribute not found, looking for it type's attributes:
-            return ResolveValue<ATTRIBUTE_TYPE>(field.DeclaringType.GetCustomAttributes(typeof(ATTRIBUTE_TYPE), false), field.Name);
+            return ResolveValue<ATTRIBUTE_TYPE>(field.DeclaringType.GetCustomAttributes(typeof(ATTRIBUTE_TYPE), false), field.Name, isName);
         } //ResolveValue
 
         #region implementation
@@ -73,7 +73,7 @@ namespace SA.Universal.Enumerations {
 
         static string GetSimpleDisplayName(Enum value) {
             string rawName = value.ToString();
-            string name = ResolveValue<DisplayNameAttribute>(value.GetType().GetField(rawName));
+            string name = ResolveValue<DisplayNameAttribute>(value.GetType().GetField(rawName), true);
             if (string.IsNullOrEmpty(name))
                 return rawName;
             return name;
@@ -86,7 +86,7 @@ namespace SA.Universal.Enumerations {
             for (int index = 0; index < members.Length; index++) {
                 if (char.IsDigit(members[index][0]))
                     continue;
-                string newValue = ResolveValue<DisplayNameAttribute>(attributes, members[index]);
+                string newValue = ResolveValue<DisplayNameAttribute>(attributes, members[index], false);
                 if (!string.IsNullOrEmpty(newValue))
                     members[index] = newValue;
             } //loop
@@ -99,14 +99,14 @@ namespace SA.Universal.Enumerations {
             return sb.ToString();
         } //GetFlaggedDisplayName
 
-        static string ResolveValue<ATTRIBUTE_TYPE>(object[] attributes, string memberName) where ATTRIBUTE_TYPE : StringAttribute {
+        static string ResolveValue<ATTRIBUTE_TYPE>(object[] attributes, string memberName, bool isName) where ATTRIBUTE_TYPE : StringAttribute {
             if (attributes == null) return null;
             if (attributes.Length < 1) return null;
             ATTRIBUTE_TYPE attribute = (ATTRIBUTE_TYPE)attributes[0];
-            return ResolveValue(attribute, memberName);
+            return ResolveValue(attribute, memberName, isName);
         } //ResolveValue
 
-        static string ResolveValue(StringAttribute attribute, string memberName) {
+        static string ResolveValue(StringAttribute attribute, string memberName, bool isName) {
             string value = attribute.Value;
             if (!string.IsNullOrEmpty(value))
                 return value;
@@ -117,7 +117,7 @@ namespace SA.Universal.Enumerations {
             if (!resourceType.IsAssignableTo(typeof(IStringAttribute)))
                 return null;
             IStringAttribute implementor = (IStringAttribute)Activator.CreateInstance(resourceType);
-            return attribute.IsName ? implementor[memberName].name : implementor[memberName].description;
+            return isName ? implementor[memberName].name : implementor[memberName].description;
         } //ResolveValue
 
         readonly static string flagDelimiter;

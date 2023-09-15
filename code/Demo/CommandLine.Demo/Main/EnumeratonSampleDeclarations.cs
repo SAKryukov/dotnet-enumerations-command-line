@@ -1,49 +1,40 @@
 ﻿namespace SA.Test.CommandLine.Main {
     using SA.Universal.Enumerations;
 
+    class Nameset : IStringAttribute {
+        public Nameset() {
+            dictionary = System.Windows.Application.Current.MainWindow.Resources;
+        } //Nameset
+        (string name, string description) IStringAttribute.this[string option] =>
+            ((string)dictionary[option], (string)dictionary[$"{option}D"]);
+        readonly System.Windows.ResourceDictionary dictionary;
+    } //class Nameset
+
+    [DisplayName(typeof(Nameset))]
+    [Description(typeof(Nameset))]
     enum StringOption {
-
         [Abbreviation(1)]
-        [Description("Directory where the input files are found")]
-        [DisplayName("InputDirectory")]
         InputDirectory,
-
-        [Description("File name pattern")]
-        [DisplayName("Input File Mask")]
         InputFileMask,
-
-        [Description("Directory where the output files should be created")]
-        [DisplayName("Output Directory")]
         [Abbreviation(1)]
         OutputDirectory,
-
-        [Description("Output file format to be used regardless of the input file format")]
-        [DisplayName("Force Output Format")]
         [Abbreviation(1)]
         ForceOutputFormat,
-
-        [Abbreviation(1)]
         ConfigurationFile,
-
         [Abbreviation(3)]
         LogFile,
-
     } //enum StringOption
 
+    [DisplayName(typeof(Nameset))]
+    [Description(typeof(Nameset))]
     enum SwitchOption {
-
         Default,
-
         [Abbreviation(1)]
-        [Description("Use recursive pattern")]
         Recursive,
-
         [Abbreviation(1)]
         CreateOutputDirectory,
         [Abbreviation(1)]
-
-        Quite,
-
+        Quiet,
     } //SwitchOption
 
 }

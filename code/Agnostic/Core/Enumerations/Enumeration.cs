@@ -169,7 +169,9 @@ namespace SA.Universal.Enumerations {
                     AbbreviationAttribute attr = (AbbreviationAttribute)attributes[0];
                     abbreviationLength = attr.AbbreviationLength;
                 } //if Abbreviation works
-                list.Add(new EnumerationItem<ENUM>(name, abbreviationLength, GetDisplayName(field), GetDescription(field), currentIndex, objValue, enumValue));
+                string displayName = GetDisplayName(field);
+                string description = GetDescription(field);
+                list.Add(new EnumerationItem<ENUM>(name, abbreviationLength, displayName, description, currentIndex, objValue, enumValue));
                 currentIndex++;
             } //loop
             enumerationCollection = list.ToArray();
@@ -177,13 +179,13 @@ namespace SA.Universal.Enumerations {
         } //BuildEnumerationCollectionCore
 
         static string GetDisplayName(FieldInfo field) {
-            string value = StringAttributeUtility.ResolveValue<DisplayNameAttribute>(field);
+                string value = StringAttributeUtility.ResolveValue<DisplayNameAttribute>(field, true);
             if (string.IsNullOrEmpty(value))
                 value = field.Name;
             return value;
         } //GetDisplayName
         static string GetDescription(FieldInfo field) {
-            return StringAttributeUtility.ResolveValue<DescriptionAttribute>(field);
+            return StringAttributeUtility.ResolveValue<DescriptionAttribute>(field, false);
         } //GetDescription
 
         /// <summary>

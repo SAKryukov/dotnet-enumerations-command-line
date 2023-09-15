@@ -16,7 +16,6 @@ namespace SA.Universal.Enumerations {
         public StringAttribute(Type type) { this.type = type; }
         internal string Value { get { return value; } }
         internal Type Type { get { return type; } }
-        internal protected abstract bool IsName { get; }
         #region implementation
         readonly string value;
         readonly Type type;
@@ -42,8 +41,6 @@ namespace SA.Universal.Enumerations {
         /// <param name="type">Expects type of the resource class auto-generated when XML resource (.RESX) is created</param>
         public DisplayNameAttribute(Type type) : base(type) { }
 
-        internal protected override bool IsName => true;
-
     } //class DisplayNameAttribute
 
     /// <summary>
@@ -64,8 +61,6 @@ namespace SA.Universal.Enumerations {
         /// </summary>
         /// <param name="type">Expects type of the resource class auto-generated when XML resource (.RESX) is created</param>
         public DescriptionAttribute(Type type) : base(type) { }
-
-        internal protected override bool IsName => false;
 
     } //class DisplayNameAttribute
 

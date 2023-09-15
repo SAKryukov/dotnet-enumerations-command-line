@@ -1,9 +1,19 @@
 ﻿<Window x:Class="SA.Test.CommandLine.View.WindowDocumentation"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:enum="clr-namespace:System;assembly=netstandard"
         Title="Documentation"
         WindowStartupLocation="CenterOwner"        
         SizeToContent="WidthAndHeight">
+    <Window.Resources>
+        <enum:String x:Key="InputDirectory">Input Directory</enum:String>
+        <enum:String x:Key="InputDirectoryD">Directory where the input files are taken</enum:String>
+        <enum:String x:Key="OutputDirectory">Output Directory</enum:String>
+        <enum:String x:Key="OutputDirectoryD">Directory where the output files should be place</enum:String>
+        <enum:String x:Key="CreateOutputDirectory">Create Output Directory</enum:String>
+        <enum:String x:Key="DefaultD">Use all options by default</enum:String>
+        <enum:String x:Key="RecursiveD">Traverse input directory recursiverly</enum:String>
+    </Window.Resources>
     <Border Padding="20">
         <Grid>
             <TreeView BorderThickness="0">
