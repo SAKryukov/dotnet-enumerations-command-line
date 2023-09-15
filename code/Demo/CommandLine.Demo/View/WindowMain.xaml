@@ -60,7 +60,7 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <Border Grid.Column="0">
-                        <TextBox Grid.Row="1" x:Name="textBoxCommandLine" AcceptsReturn="False" AcceptsTab="False" Background="LightYellow"/>
+                        <TextBox Grid.Row="1" x:Name="textBoxCommandLine" AcceptsReturn="False" AcceptsTab="False" Background="LightYellow" TextWrapping="Wrap"/>
                     </Border>
                     <Border Grid.Column="1" Padding="10 0 10 10">
                         <StackPanel>
