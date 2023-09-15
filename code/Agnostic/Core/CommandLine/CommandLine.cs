@@ -34,13 +34,13 @@
     http://www.SAKryukov.org
 */
 
-namespace SA.Universal.Utilities {
+namespace SA.Agnostic.Utilities {
     using System;
     using System.Collections.Generic;
     using StringList = System.Collections.Generic.List<string>;
     using StringDictionary = System.Collections.Generic.Dictionary<string, string>;
     using DefinitionSet = CommandLineParserDefinitionSet;
-    using SA.Universal.Enumerations;
+    using SA.Agnostic.Enumerations;
 #if DEBUG
     using Debug = System.Diagnostics.Debug;
 #endif

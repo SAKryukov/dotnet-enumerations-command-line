@@ -54,8 +54,8 @@
         } //ImplementCopy
 
         void BuildDocumentation() {
-            Universal.Enumerations.Enumeration<Main.SwitchOption> switches = new(refresh: true);
-            Universal.Enumerations.Enumeration<Main.StringOption> values = new(refresh: true);
+            Agnostic.Enumerations.Enumeration<Main.SwitchOption> switches = new(refresh: true);
+            Agnostic.Enumerations.Enumeration<Main.StringOption> values = new(refresh: true);
             StringList stringSwitches = new();
             foreach (var option in switches)
                 ShowOption(stringSwitches, option, isSwitch: true);
@@ -66,7 +66,7 @@
             treeViewItemValues.ItemsSource = stringValues;
         } //BuildDocumentation
 
-        static void ShowOption<ENUM>(StringList list, Universal.Enumerations.EnumerationItem<ENUM> option, bool isSwitch = false) {
+        static void ShowOption<ENUM>(StringList list, Agnostic.Enumerations.EnumerationItem<ENUM> option, bool isSwitch = false) {
             list.Add(Main.DefinitionSet.Documentation.FormatName(option.Name, option.AbbreviatedName == option.Name, isSwitch: isSwitch));
             if (option.AbbreviatedName != option.Name)
                 list.Add(Main.DefinitionSet.Documentation.FormatName(option.AbbreviatedName, true, isSwitch: isSwitch));

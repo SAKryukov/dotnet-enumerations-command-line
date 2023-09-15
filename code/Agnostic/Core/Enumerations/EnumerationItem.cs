@@ -8,7 +8,7 @@
     http://www.SAKryukov.org
 */
 
-namespace SA.Universal.Enumerations {
+namespace SA.Agnostic.Enumerations {
     using Cardinal = System.UInt32;
     using AbbreviationLength = System.Byte;
     using Debug = System.Diagnostics.Debug;

@@ -9,9 +9,9 @@
     using Path = System.IO.Path;
     using Directory = System.IO.Directory;
     using File = System.IO.File;
-    using CommandLine = Universal.Utilities.CommandLine<Main.SwitchOption, Main.StringOption>;
-    using CommandLineSwitchStatus = Universal.Utilities.CommandLineSwitchStatus;
-    using CommandLineParsingOptions = Universal.Utilities.CommandLineParsingOptions;
+    using CommandLine = Agnostic.Utilities.CommandLine<Main.SwitchOption, Main.StringOption>;
+    using CommandLineSwitchStatus = Agnostic.Utilities.CommandLineSwitchStatus;
+    using CommandLineParsingOptions = Agnostic.Utilities.CommandLineParsingOptions;
     using Key = System.Windows.Input.Key;
 
     public partial class WindowMain : Window {

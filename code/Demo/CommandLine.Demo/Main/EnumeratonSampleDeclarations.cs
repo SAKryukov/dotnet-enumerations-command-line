@@ -1,5 +1,5 @@
 ﻿namespace SA.Test.CommandLine.Main {
-    using SA.Universal.Enumerations;
+    using SA.Agnostic.Enumerations;
     using Application = System.Windows.Application;
 
     class Nameset : IStringAttribute {

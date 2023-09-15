@@ -8,7 +8,7 @@
     http://www.SAKryukov.org
 */
 
-namespace SA.Universal.Enumerations {
+namespace SA.Agnostic.Enumerations {
     using System;
     using System.Reflection;
     using StringBuilder = System.Text.StringBuilder;
