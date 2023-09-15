@@ -44,8 +44,8 @@ namespace SA.Universal.Enumerations {
     /// <typeparam name="ENUM">There is no constraint on this type; for most typical application this is an enumeration type</typeparam>
     public class Enumeration<ENUM> : IEnumerable<EnumerationItem<ENUM>> {
 
-        public Enumeration() {
-            BuildEnumerationCollection();
+        public Enumeration(bool refresh = false) {
+            BuildEnumerationCollection(refresh: refresh);
             enumeratorInstance = new Enumerator(this);
         } //Enumeration
 
@@ -138,8 +138,8 @@ namespace SA.Universal.Enumerations {
 
         delegate void BuildAction();
 
-        static void BuildEnumerationCollection() {
-            if (enumerationCollection != null) return;
+        static void BuildEnumerationCollection(bool refresh = false) {
+            if (!refresh && enumerationCollection != null) return;
             BuildEnumerationCollectionCore();
         } //BuildEnumerationCollection
 
