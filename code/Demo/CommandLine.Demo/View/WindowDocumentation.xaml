@@ -4,15 +4,29 @@
         Title="Documentation"
         WindowStartupLocation="CenterOwner"        
         SizeToContent="WidthAndHeight">
-    <Border Padding="20">
-        <Grid>
-            <TreeView BorderThickness="0">
-                <TreeViewItem Header="Usage" IsExpanded="True">
-                    <TreeViewItem Header="Application {{ switch | value | file}}"/>
-                </TreeViewItem>
-                <TreeViewItem x:Name="treeViewItemSwitches" Header="Switches" IsExpanded="True"/>
-                <TreeViewItem x:Name="treeViewItemValues" Header="Values" IsExpanded="True"/>
-            </TreeView>
-        </Grid>
-    </Border>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Padding="20">
+            <Grid>
+                <TreeView BorderThickness="0">
+                    <TreeViewItem Header="Usage" IsExpanded="True">
+                        <TreeViewItem Header="Application {{ switch | value | file}}"/>
+                    </TreeViewItem>
+                    <TreeViewItem x:Name="treeViewItemSwitches" Header="Switches" IsExpanded="True"/>
+                    <TreeViewItem x:Name="treeViewItemValues" Header="Values" IsExpanded="True"/>
+                </TreeView>
+            </Grid>
+        </Border>
+        <StatusBar Grid.Row="1">
+            <StatusBarItem>
+                <Button x:Name="buttonCopy" Padding="10 0 10 2">_Copy</Button>
+            </StatusBarItem>
+            <StatusBarItem>
+                <ComboBox x:Name="comboBoxCulture" Margin="10 0 0 0"/>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
 </Window>
