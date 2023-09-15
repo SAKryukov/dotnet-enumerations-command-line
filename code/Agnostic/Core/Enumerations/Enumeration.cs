@@ -139,7 +139,7 @@ namespace SA.Universal.Enumerations {
         delegate void BuildAction();
 
         static void BuildEnumerationCollection() {
-            if (enumerationCollection != null) return;
+            if (enumerationCollection != null) return; //SA???
             BuildEnumerationCollectionCore();
         } //BuildEnumerationCollection
 
@@ -179,7 +179,7 @@ namespace SA.Universal.Enumerations {
         } //BuildEnumerationCollectionCore
 
         static string GetDisplayName(FieldInfo field) {
-                string value = StringAttributeUtility.ResolveValue<DisplayNameAttribute>(field, true);
+            string value = StringAttributeUtility.ResolveValue<DisplayNameAttribute>(field, true);
             if (string.IsNullOrEmpty(value))
                 value = field.Name;
             return value;
@@ -193,12 +193,8 @@ namespace SA.Universal.Enumerations {
             /// If nobody calls GetIntegerIndexFromEnumValue, IndexDictionary remains null
         /// </summary>
         static void BuildIndexDictionary() {
-#if THREAD_SAFE_ENUMERATIONS
-            Build(BuildIndexDictionaryCore, IndexDictionary, IndexDictionaryLock);
-#else
-            if (indexDictionary != null) return;
+            if (indexDictionary != null) return; //SA???
             BuildIndexDictionaryCore();
-#endif
         } //BuildIndexDictionary
 
         static void BuildIndexDictionaryCore() {
