@@ -1,27 +1,31 @@
 ﻿<FrameworkContentElement x:Class="SA.Test.CommandLine.View.WindowMain"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:enum="clr-namespace:System;assembly=netstandard"
+        xmlns:system="clr-namespace:System;assembly=netstandard"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <FrameworkContentElement.Resources>
-        <enum:String x:Key="InputDirectory">Входная директория</enum:String>
-        <enum:String x:Key="InputDirectoryD">Директория, из которой берутся входные файлы</enum:String>
-        <enum:String x:Key="OutputDirectory">Выходная директория</enum:String>
-        <enum:String x:Key="OutputDirectoryD">Директория, в которую должны помещаться выходные файлы</enum:String>
-        <enum:String x:Key="InputFileMask">Маска входного файла</enum:String>
-        <enum:String x:Key="InputFileMaskD">Файловая маска для входного файла; по умолчанию «*.opus»</enum:String>
-        <enum:String x:Key="ForceOutputFormat">Выходной формат</enum:String>
-        <enum:String x:Key="ForceOutputFormatD">Формат выходного файла, применяемый независимо от форматов входных файлов; по умолчанию SVG</enum:String>
-        <enum:String x:Key="ConfigurationFile">Имя конфигурационного файла</enum:String>
-        <enum:String x:Key="ConfigurationFileD">Имя конфигурационного файла; по умолчанию «configuration.xml»</enum:String>
-        <enum:String x:Key="LogFile">"Имя журнального файла</enum:String>
-        <enum:String x:Key="LogFileD">Имя журнального файла; по умолчанию «application.log.txt»</enum:String>
-        <enum:String x:Key="Default">По умолчанию</enum:String>
-        <enum:String x:Key="DefaultD">Если опция задана, все используются все опции по умолчанию</enum:String>
-        <enum:String x:Key="Recursive">Рекурсивно</enum:String>
-        <enum:String x:Key="RecursiveD">Если опция задана, файлы входная директория ищутся рекурсивно</enum:String>
-        <enum:String x:Key="CreateOutputDirectory">Создать выходную директорию</enum:String>
-        <enum:String x:Key="CreateOutputDirectoryD">Опция определяет, что выходная директоруя создаётся; по умолчанию true</enum:String>
-        <enum:String x:Key="Quiet">«Молчаливо»</enum:String>
-        <enum:String x:Key="QuietD">Если опция задана, вывод текста на консоль не производится; по умолчанию false</enum:String>
+        <system:String x:Key="Usage">Использование параметеров командной строки</system:String>
+        <system:String x:Key="UsageDescription">Файл_приложения { Строковый_параметр | Ключ | Файл }</system:String>
+        <system:String x:Key="Switches">Ключи</system:String>
+        <system:String x:Key="Values">Строковые параметры</system:String>
+        <system:String x:Key="InputDirectory">Входная директория</system:String>
+        <system:String x:Key="InputDirectoryD">Директория, из которой берутся входные файлы</system:String>
+        <system:String x:Key="OutputDirectory">Выходная директория</system:String>
+        <system:String x:Key="OutputDirectoryD">Директория, в которую должны помещаться выходные файлы</system:String>
+        <system:String x:Key="InputFileMask">Маска входного файла</system:String>
+        <system:String x:Key="InputFileMaskD">Файловая маска для входного файла; по умолчанию «*.opus»</system:String>
+        <system:String x:Key="ForceOutputFormat">Выходной формат</system:String>
+        <system:String x:Key="ForceOutputFormatD">Формат выходного файла, применяемый независимо от форматов входных файлов; по умолчанию SVG</system:String>
+        <system:String x:Key="ConfigurationFile">Имя конфигурационного файла</system:String>
+        <system:String x:Key="ConfigurationFileD">Имя конфигурационного файла; по умолчанию «configuration.xml»</system:String>
+        <system:String x:Key="LogFile">"Имя файла журнала</system:String>
+        <system:String x:Key="LogFileD">Имя файла для документирования событий; по умолчанию «application.log.txt»</system:String>
+        <system:String x:Key="Default">По умолчанию</system:String>
+        <system:String x:Key="DefaultD">Если опция задана, все используются все опции по умолчанию</system:String>
+        <system:String x:Key="Recursive">Рекурсивно</system:String>
+        <system:String x:Key="RecursiveD">Если опция задана, файлы входная директория ищутся рекурсивно</system:String>
+        <system:String x:Key="CreateOutputDirectory">Создать выходную директорию</system:String>
+        <system:String x:Key="CreateOutputDirectoryD">Опция определяет, что выходная директоруя создаётся; по умолчанию true</system:String>
+        <system:String x:Key="Quiet">«Молчаливо»</system:String>
+        <system:String x:Key="QuietD">Если опция задана, вывод текста на консоль не производится; по умолчанию false</system:String>
     </FrameworkContentElement.Resources>
 </FrameworkContentElement>
