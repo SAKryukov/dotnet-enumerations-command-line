@@ -7,7 +7,7 @@
             dictionary = Application.Current?.MainWindow?.Resources;
         } //Nameset
         (string name, string description) IStringAttribute.this[string option] =>
-            ((string)dictionary?[option], (string)dictionary?[$"{option}D"]);
+            ((string)dictionary?[option], (string)dictionary?[DefinitionSet.ResourceKey(option)]);
         readonly System.Windows.ResourceDictionary dictionary;
     } //class Nameset
 

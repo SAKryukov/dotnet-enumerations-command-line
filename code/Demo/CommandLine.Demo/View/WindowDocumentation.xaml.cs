@@ -23,7 +23,7 @@
         void ShowOption<ENUM>(StringList list, Universal.Enumerations.EnumerationItem<ENUM> option) {
             list.Add($"-{option.Name}");
             if (option.AbbreviatedName != option.Name)
-                list.Add($"{option.AbbreviatedName}");
+                list.Add($"-{option.AbbreviatedName}");
             if (!string.IsNullOrEmpty(option.Description))
                 list.Add($"            {option.DisplayName}: {option.Description}");
             else
