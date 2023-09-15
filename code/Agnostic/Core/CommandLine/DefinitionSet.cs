@@ -1,4 +1,4 @@
-﻿/* 
+﻿/*  
     Command Line Utility:
     
     CommandLine is based on Enumeration and EnumerationIndexedArray

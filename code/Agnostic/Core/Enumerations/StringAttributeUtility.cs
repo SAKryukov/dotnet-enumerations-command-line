@@ -13,6 +13,10 @@ namespace SA.Universal.Enumerations {
     using System.Reflection;
     using StringBuilder = System.Text.StringBuilder;
 
+    public interface IStringAttribute {
+        (string name, string description) this[string name] { get; }
+    } //interface IStringAttribute
+
     /// <summary>
     /// Utility class used to extract Display Name and Description information for enumeration members from enumeration metadata
     /// based on DisplayNameAttribute and DescriptionAttribute
@@ -110,14 +114,10 @@ namespace SA.Universal.Enumerations {
             Type resourceType = attribute.Type;
             if (resourceType == null)
                 return null;
-            BindingFlags bindingFlags = BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Static | BindingFlags.GetProperty;
-            PropertyInfo pi = resourceType.GetProperty(memberName, bindingFlags);
-            if (pi == null)
+            if (!resourceType.IsAssignableTo(typeof(IStringAttribute)))
                 return null;
-            object stringValue = pi.GetValue(null, Array.Empty<object>());
-            if (stringValue == null)
-                return null;
-            return stringValue as string;
+            IStringAttribute implementor = (IStringAttribute)Activator.CreateInstance(resourceType);
+            return attribute.IsName ? implementor[memberName].name : implementor[memberName].description;
         } //ResolveValue
 
         readonly static string flagDelimiter;

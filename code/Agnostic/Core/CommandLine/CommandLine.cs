@@ -36,11 +36,10 @@
 
 namespace SA.Universal.Utilities {
     using System;
-    using System.Globalization;
     using System.Collections.Generic;
     using StringList = System.Collections.Generic.List<string>;
     using StringDictionary = System.Collections.Generic.Dictionary<string, string>;
-    using DefinitionSet = Universal.Utilities.CommandLineParserDefinitionSet;
+    using DefinitionSet = CommandLineParserDefinitionSet;
     using SA.Universal.Enumerations;
 #if DEBUG
     using Debug = System.Diagnostics.Debug;

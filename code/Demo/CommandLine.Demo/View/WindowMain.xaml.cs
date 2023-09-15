@@ -9,21 +9,23 @@
     using Path = System.IO.Path;
     using Directory = System.IO.Directory;
     using File = System.IO.File;
-    using CommandLine = Universal.Utilities.CommandLine<Main.BitsetOption, Main.StringOption>;
+    using CommandLine = Universal.Utilities.CommandLine<Main.SwitchOption, Main.StringOption>;
     using CommandLineSwitchStatus = Universal.Utilities.CommandLineSwitchStatus;
     using CommandLineParsingOptions = Universal.Utilities.CommandLineParsingOptions;
     using Key = System.Windows.Input.Key;
-    using KeyStates = System.Windows.Input.KeyStates;
 
     public partial class WindowMain : Window {
 
         public WindowMain() {
-            InitializeComponent();
+            InitializeComponent();            
             buttonParse.Click += (_, _) => Parse();
+            buttonDocumentation.Click += (_, _) => documentation.ShowDocumentation(this);
             PreviewKeyDown += (_, eventArgs) => {
                 if ((eventArgs.Key == Key.Enter) &&
                 (Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl)))
                     Parse();
+                else if (eventArgs.Key == Key.F1)
+                    documentation.ShowDocumentation(this);
             }; //KeyDown
             string name = System.Reflection.Assembly.GetEntryAssembly().Location;
             string[] files = Directory.GetFiles(Path.GetDirectoryName(name), Main.DefinitionSet.MaskSampler(Path.GetFileNameWithoutExtension(name), Path.GetExtension(name)));
@@ -62,7 +64,7 @@
 
         void Parse() {
             StringList list = GetPreparsedLines(textBoxCommandLine.Text);
-            CommandLineParsingOptions parsingOptions = CommandLineParsingOptions.DefaultMicrosoft;
+            CommandLineParsingOptions parsingOptions;
             parsingOptions = CommandLineParsingOptions.CaseInsensitive;
             if (checkBoxCaseSensitiveKeys.IsChecked == true) parsingOptions |= CommandLineParsingOptions.CaseSensitiveKeys;
             if (checkBoxCaseSensitiveAbbreviations.IsChecked == true) parsingOptions |= CommandLineParsingOptions.CaseSensitiveAbbreviations;
@@ -98,6 +100,7 @@
         } //Parse
 
         readonly string pipeName, samplerName;
+        readonly WindowDocumentation documentation = new();
 
     } //class WindowMain
 

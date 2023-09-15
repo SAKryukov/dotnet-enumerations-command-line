@@ -9,10 +9,14 @@
     <Window.Resources>
         <Thickness x:Key="paddingBottom">0 6 0 0</Thickness>
         <Thickness x:Key="paddingOuter">12 0 12 6</Thickness>
+        <Thickness x:Key="paddingButton">12 0 12 2</Thickness>
         <Thickness x:Key="stackMargin">0 12 0 0</Thickness>
         <system:Double x:Key="splitterSize">10</system:Double>
         <Style TargetType="CheckBox">
             <Setter Property="IsChecked" Value="True"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Padding" Value="{StaticResource paddingButton}"/>
         </Style>
         <Style TargetType="TreeViewItem">
             <Setter Property="IsExpanded" Value="True"/>
@@ -47,7 +51,7 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="1*"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
             <Border Grid.Row="0">
@@ -60,7 +64,9 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <Border Grid.Column="0">
-                        <TextBox Grid.Row="1" x:Name="textBoxCommandLine" AcceptsReturn="False" AcceptsTab="False" Background="LightYellow" TextWrapping="Wrap"/>
+                        <TextBox Grid.Row="1" x:Name="textBoxCommandLine" AcceptsReturn="False" AcceptsTab="False" Background="LightYellow" TextWrapping="Wrap" ToolTip="Ctrl+Enter: parse">
+                            -R /Q F1 /C+ -InputDirectory: -qwerty:*.wepb /Q F1 F2 /InputFileMask:*.webm /Q+ -R- /LogFile:"my long log file name.Log.txt" /OutputDirectory:\sa\media -/OutputDirectory:.
+                        </TextBox>
                     </Border>
                     <Border Grid.Column="1" Padding="10 0 10 10">
                         <StackPanel>
@@ -68,7 +74,8 @@
                             <CheckBox x:Name="checkBoxCaseSensitiveKeys" Margin="{StaticResource stackMargin}">_Keys</CheckBox>
                             <CheckBox x:Name="checkBoxCaseSensitiveAbbreviations" Margin="{StaticResource stackMargin}">_Abbreviations</CheckBox>
                             <CheckBox x:Name="checkBoxCaseSensitiveFiles" Margin="{StaticResource stackMargin}">_File Names</CheckBox>
-                            <Button x:Name="buttonParse" Margin="{StaticResource stackMargin}">_Parse</Button>
+                            <Button x:Name="buttonParse" Margin="{StaticResource stackMargin}" ToolTip="Ctrl+Enter">_Parse</Button>
+                            <Button x:Name="buttonDocumentation" Margin="{StaticResource stackMargin}" ToolTip="F1">_Documentation...</Button>
                         </StackPanel>
                     </Border>
                 </Grid>
