@@ -19,4 +19,5 @@ Covered topics:
 
 ## Under development
 
-[Demo application](article/demo.webp)
+![Demo application](article/demo.webp)
+
