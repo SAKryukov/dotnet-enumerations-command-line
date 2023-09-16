@@ -1,13 +1,14 @@
-﻿namespace SA.Test.CommandLine.Main {
+﻿namespace SA.Demo.Editing.Main {
 
     static class DefinitionSet {
 
+        internal static string ResourceKey(string optionName) =>
+            $"{optionName}D";
+
+        /*
         internal const string extensionExecutable = "exe";
         internal static string MaskSampler(string ownName, string ownExtension) =>
             $"{ownName}*{ownExtension}";
-
-        internal static string ResourceKey(string optionName) =>
-            $"{optionName}D";
 
         internal static class Sampler {
             internal const string localServer = ".";
@@ -26,7 +27,7 @@
             internal static string FormatDisplayName(string name, string description) =>
                 $"{indent}{name}: {description}";
         } //class Documentation
-
+        */
 
     } //class DefinitionSet
 

@@ -6,7 +6,7 @@
 
         public WindowMain() {
             InitializeComponent();
-            enumerationBox.TargetObjectName = "value Option";
+            enumerationBox.TargetObjectName = "Fruit Choice";
             enumerationBox.Target = valueOption;
             enumerationComboBox.Target = valueOptionCombo;
             enumerationComboBox.TargetObjectName = enumerationBox.TargetObjectName;
@@ -18,9 +18,9 @@
             base.OnContentRendered(eventArgs);
         } //OnContentRendered
 
-        Main.BitsetOption bitsetOption = default;
-        Main.ValueOption valueOption = default;
-        Main.ValueOption valueOptionCombo = default;
+        readonly Main.BitsetOption bitsetOption = default;
+        readonly Main.ChoiceOption valueOption = default;
+        readonly Main.ChoiceOption valueOptionCombo = default;
 
     } //class WindowMain
 

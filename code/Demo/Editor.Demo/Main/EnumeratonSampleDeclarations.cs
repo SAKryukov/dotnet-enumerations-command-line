@@ -2,7 +2,6 @@
     using SA.Agnostic.Enumerations;
     using Application = System.Windows.Application;
 
-    /*
     class Nameset : IStringAttribute {
         (string name, string description) IStringAttribute.this[string option] {
             get {
@@ -11,9 +10,9 @@
             } //get this
         } //this
     } //class Nameset
-    */
 
     [System.Flags]
+    [DisplayTextProvider(typeof(Nameset))]
     enum BitsetOption : int {
         [NonEnumerable]
         None = 0,
@@ -27,15 +26,13 @@
         Default = Recursive | CaseSensitive,
     } //enum StringOption
 
-    //[DisplayTextProvider(typeof(Nameset))]
-    enum ValueOption {
-        Default,
-        [Abbreviation(1)]
-        Recursive,
-        [Abbreviation(1)]
-        CreateOutputDirectory,
-        [Abbreviation(1)]
-        Quiet,
-    } //SwitchOption
+    [DisplayTextProvider(typeof(Nameset))]
+    enum ChoiceOption {
+        Apple,
+        MandarinOrange,
+        Avocado,
+        BlackRaspberry,
+        RedRaspberry,
+    } //ChoiceOption
 
 }
