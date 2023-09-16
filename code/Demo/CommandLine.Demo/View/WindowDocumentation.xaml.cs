@@ -89,7 +89,6 @@
 
         internal void ShowDocumentation(Window owner) {
             Owner = owner;
-            BuildDocumentation();
             ShowDialog();
         } //ShowDocumentation
 

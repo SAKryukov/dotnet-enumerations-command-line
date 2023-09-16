@@ -10,13 +10,31 @@
         <system:String x:Key="UsageDescription">Application { Value | Switch | File }</system:String>
         <system:String x:Key="Switches">Switches</system:String>
         <system:String x:Key="Values">Values</system:String>
+        <Style TargetType="Button">
+            <Setter Property="Padding" Value="12 0 12 2"/>
+            <Setter Property="Margin" Value="4 0 4 0"/>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="Padding" Value="18 0 2 2"/>
+            <Setter Property="Margin" Value="10 0 0 0"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="StatusBarItem">
+            <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+        </Style>
+        <Style TargetType="StatusBar">
+            <Setter Property="BorderThickness" Value="0 1 0 0"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="BorderBrush" Value="{x:Static SystemColors.ActiveBorderBrush}"/>
+        </Style>
+        <Thickness x:Key="paddingTextBorder">24 8 24 8</Thickness>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Border Grid.Row="0" Padding="20">
+        <Border Grid.Row="0" Padding="{StaticResource paddingTextBorder}">
             <Grid>
                 <TreeView x:Name="treeView"  BorderThickness="0">
                     <TreeViewItem Header="{DynamicResource Usage}" IsExpanded="True">
@@ -27,12 +45,15 @@
                 </TreeView>
             </Grid>
         </Border>
-        <StatusBar Grid.Row="1" BorderThickness="0 1 0 0" BorderBrush="{x:Static SystemColors.ActiveBorderBrush}">
+        <StatusBar Grid.Row="1">
             <StatusBarItem>
-                <Button x:Name="buttonCopy" Padding="10 0 10 2" ToolTip="Ctrl+C: Copy iten to clipboard">_Copy</Button>
+                <Button x:Name="buttonCopy" ToolTip="Ctrl+C: Copy iten to clipboard">_Copy</Button>
             </StatusBarItem>
             <StatusBarItem>
-                <ComboBox x:Name="comboBoxCulture" Margin="10 0 0 0"/>
+                <ComboBox x:Name="comboBoxCulture"/>
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right" >
+                <Button ToolTip="Escape, Enter" IsDefault="True" IsCancel="True">Close</Button>
             </StatusBarItem>
         </StatusBar>
     </Grid>
