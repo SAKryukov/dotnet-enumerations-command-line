@@ -34,11 +34,6 @@
                 </ResourceDictionary>
                 <ResourceDictionary Source="pack://application:,,,/Demo.ResourceDictionary.Source;component/Shared.xaml"/>
                 <ResourceDictionary>
-                    <Thickness x:Key="paddingBottom">0 6 0 0</Thickness>
-                    <Thickness x:Key="paddingOuter">12 0 12 6</Thickness>
-                    <Thickness x:Key="paddingBorderStack">12 0 0 2</Thickness>
-                    <Thickness x:Key="stackMargin">0 12 0 0</Thickness>
-                    <system:Double x:Key="splitterSize">10</system:Double>
                     <Style TargetType="CheckBox">
                         <Setter Property="IsChecked" Value="True"/>
                     </Style>
@@ -55,21 +50,7 @@
                             </Trigger>
                         </Style.Triggers>
                     </Style>
-                    <Style x:Key="gridSplitter" TargetType="GridSplitter">
-                        <Style.Triggers>
-                            <Trigger Property="ResizeDirection" Value="Rows">
-                                <Setter Property="Height" Value="{StaticResource splitterSize}"/>
-                            </Trigger>
-                            <Trigger Property="ResizeDirection" Value="Columns">
-                                <Setter Property="Width" Value="{StaticResource splitterSize}"/>
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="Cyan"/>
-                            </Trigger>
-                        </Style.Triggers>
-                        <Setter Property="HorizontalAlignment" Value="Stretch"/>
-                        <Setter Property="Background" Value="LightCyan"/>
-                    </Style>
+                    <Thickness x:Key="paddingOuter">12 0 12 6</Thickness>
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
@@ -114,7 +95,7 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Border Grid.Column="0" Background="Yellow">
+                    <Border Grid.Column="0">
                         <TreeView>
                             <TreeViewItem Header="Options">
                                 <TreeViewItem x:Name="treeViewItemOptionsSwitch" Header="Switches"/>
@@ -123,7 +104,8 @@
                             </TreeViewItem>
                         </TreeView>
                     </Border>
-                    <GridSplitter Grid.Column="1" ResizeDirection="Columns" Style="{StaticResource gridSplitter}"/>
+                    <GridSplitter Grid.Column="1" ResizeDirection="Columns"/>
+                    <!-- Style="{StaticResource gridSplitter}"/-->
                     <Border Grid.Column="2" Background="Azure">
                         <TreeView>
                             <TreeViewItem Header="Errors">
