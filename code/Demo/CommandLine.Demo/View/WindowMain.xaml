@@ -8,73 +8,78 @@
         SizeToContent="Height"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Window.Resources>
-        <system:String x:Key="InputDirectory">Input Directory</system:String>
-        <system:String x:Key="InputDirectoryD">Directory where the input files are taken</system:String>
-        <system:String x:Key="OutputDirectory">Output Directory</system:String>
-        <system:String x:Key="OutputDirectoryD">Directory where the output files should be place</system:String>
-        <system:String x:Key="InputFileMask">Input File Mask</system:String>
-        <system:String x:Key="InputFileMaskD">Filename pattern for input files; default: *.opus</system:String>
-        <system:String x:Key="ForceOutputFormat">Force Output Format</system:String>
-        <system:String x:Key="ForceOutputFormatD">Use specified output file formal regardless of the input file format; default: SVG</system:String>
-        <system:String x:Key="ConfigurationFile">Configuration File Name</system:String>
-        <system:String x:Key="ConfigurationFileD">Configuration File Name; default: configuration.xml</system:String>
-        <system:String x:Key="LogFile">"Log File Name</system:String>
-        <system:String x:Key="LogFileD">Log File Name; default: application.log.txt</system:String>
-        <system:String x:Key="Default">Default</system:String>
-        <system:String x:Key="DefaultD">Use all options by default</system:String>
-        <system:String x:Key="Recursive">Recursive</system:String>
-        <system:String x:Key="RecursiveD">Traverse input directory recursiverly</system:String>
-        <system:String x:Key="CreateOutputDirectory">Create Output Directory</system:String>
-        <system:String x:Key="CreateOutputDirectoryD">Specify if the output directory should be created if it is not available; default: true</system:String>
-        <system:String x:Key="Quiet">Quiet</system:String>
-        <system:String x:Key="QuietD">No console output; default: false</system:String>
-        <Thickness x:Key="paddingBottom">0 6 0 0</Thickness>
-        <Thickness x:Key="paddingOuter">12 0 12 6</Thickness>
-        <Thickness x:Key="paddingButton">12 0 12 2</Thickness>
-        <Thickness x:Key="paddingBorderStack">12 0 0 2</Thickness>
-        <Thickness x:Key="stackMargin">0 12 0 0</Thickness>
-        <system:Double x:Key="splitterSize">10</system:Double>
-        <Style TargetType="CheckBox">
-            <Setter Property="IsChecked" Value="True"/>
-        </Style>
-        <Style TargetType="Button">
-            <Setter Property="Padding" Value="{StaticResource paddingButton}"/>
-        </Style>
-        <Style TargetType="TreeViewItem">
-            <Setter Property="IsExpanded" Value="True"/>
-            <Style.Triggers>
-                <Trigger Property="HasItems" Value="True">
-                    <Setter Property="FontWeight" Value="Bold"/>
-                    <Setter Property="Foreground" Value="Navy"/>
-                </Trigger>
-                <Trigger Property="HasItems" Value="False">
-                    <Setter Property="FontWeight" Value="Normal"/>
-                    <Setter Property="Foreground" Value="DarkMagenta"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-        <Style TargetType="GridSplitter">
-            <Style.Triggers>
-                <Trigger Property="ResizeDirection" Value="Rows">
-                    <Setter Property="Height" Value="{StaticResource splitterSize}"/>
-                </Trigger>
-                <Trigger Property="ResizeDirection" Value="Columns">
-                    <Setter Property="Width" Value="{StaticResource splitterSize}"/>
-                </Trigger>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="Cyan"/>
-                </Trigger>
-            </Style.Triggers>
-            <Setter Property="HorizontalAlignment" Value="Stretch"/>
-            <Setter Property="Background" Value="LightCyan"/>
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    <system:String x:Key="InputDirectory">Input Directory</system:String>
+                    <system:String x:Key="InputDirectoryD">Directory where the input files are taken</system:String>
+                    <system:String x:Key="OutputDirectory">Output Directory</system:String>
+                    <system:String x:Key="OutputDirectoryD">Directory where the output files should be place</system:String>
+                    <system:String x:Key="InputFileMask">Input File Mask</system:String>
+                    <system:String x:Key="InputFileMaskD">Filename pattern for input files; default: *.opus</system:String>
+                    <system:String x:Key="ForceOutputFormat">Force Output Format</system:String>
+                    <system:String x:Key="ForceOutputFormatD">Use specified output file formal regardless of the input file format; default: SVG</system:String>
+                    <system:String x:Key="ConfigurationFile">Configuration File Name</system:String>
+                    <system:String x:Key="ConfigurationFileD">Configuration File Name; default: configuration.xml</system:String>
+                    <system:String x:Key="LogFile">"Log File Name</system:String>
+                    <system:String x:Key="LogFileD">Log File Name; default: application.log.txt</system:String>
+                    <system:String x:Key="Default">Default</system:String>
+                    <system:String x:Key="DefaultD">Use all options by default</system:String>
+                    <system:String x:Key="Recursive">Recursive</system:String>
+                    <system:String x:Key="RecursiveD">Traverse input directory recursiverly</system:String>
+                    <system:String x:Key="CreateOutputDirectory">Create Output Directory</system:String>
+                    <system:String x:Key="CreateOutputDirectoryD">Specify if the output directory should be created if it is not available; default: true</system:String>
+                    <system:String x:Key="Quiet">Quiet</system:String>
+                    <system:String x:Key="QuietD">No console output; default: false</system:String>
+                </ResourceDictionary>
+                <ResourceDictionary Source="pack://application:,,,/Demo.ResourceDictionary.Source;component/Shared.xaml"/>
+                <ResourceDictionary>
+                    <Thickness x:Key="paddingBottom">0 6 0 0</Thickness>
+                    <Thickness x:Key="paddingOuter">12 0 12 6</Thickness>
+                    <Thickness x:Key="paddingBorderStack">12 0 0 2</Thickness>
+                    <Thickness x:Key="stackMargin">0 12 0 0</Thickness>
+                    <system:Double x:Key="splitterSize">10</system:Double>
+                    <Style TargetType="CheckBox">
+                        <Setter Property="IsChecked" Value="True"/>
+                    </Style>
+                    <Style TargetType="TreeViewItem">
+                        <Setter Property="IsExpanded" Value="True"/>
+                        <Style.Triggers>
+                            <Trigger Property="HasItems" Value="True">
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="Foreground" Value="Navy"/>
+                            </Trigger>
+                            <Trigger Property="HasItems" Value="False">
+                                <Setter Property="FontWeight" Value="Normal"/>
+                                <Setter Property="Foreground" Value="DarkMagenta"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                    <Style TargetType="GridSplitter">
+                        <Style.Triggers>
+                            <Trigger Property="ResizeDirection" Value="Rows">
+                                <Setter Property="Height" Value="{StaticResource splitterSize}"/>
+                            </Trigger>
+                            <Trigger Property="ResizeDirection" Value="Columns">
+                                <Setter Property="Width" Value="{StaticResource splitterSize}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Cyan"/>
+                            </Trigger>
+                        </Style.Triggers>
+                        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                        <Setter Property="Background" Value="LightCyan"/>
+                    </Style>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Window.Resources>
     <Border Padding="{StaticResource paddingOuter}">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="1*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Border Grid.Row="0">
                 <Label Target="{Binding ElementName=textBoxCommandLine}">_Command Line:</Label>

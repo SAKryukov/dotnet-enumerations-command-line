@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Agnostic\Core\Agnostic.Core.csproj" />
     <ProjectReference Include="..\..\Agnostic\Ui\Agnostic.UI.csproj" />
+    <ProjectReference Include="..\Shared.Resources\Demo.ResourceDictionary.Source.csproj" />
   </ItemGroup>
 
 </Project>
