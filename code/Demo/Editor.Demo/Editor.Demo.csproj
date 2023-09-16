@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>SA.Demo.Editing</RootNamespace>
+    <OutputType>WinExe</OutputType>
+    <AssemblyTitle>$(AssemblyTitle): Editing</AssemblyTitle>
+    <TargetFramework>$(TargetFramework)-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Agnostic\Core\Agnostic.Core.csproj" />
+    <ProjectReference Include="..\..\Agnostic\Enumeration.Controls\Agnostic.UI.Enumeration.Controls.csproj" />
+    <ProjectReference Include="..\..\Agnostic\Ui\Agnostic.UI.csproj" />
+    <ProjectReference Include="..\Shared.Resources\Demo.ResourceDictionary.Source.csproj" />
+  </ItemGroup>
+
+</Project>
