@@ -11,6 +11,14 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/Demo.ResourceDictionary.Source;component/Shared.xaml"/>
+                <ResourceDictionary>
+                    <Style x:Key="borderText" TargetType="Border">
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="BorderBrush" Value="{x:Static SystemColors.ActiveBorderBrush}"/>
+                        <Setter Property="Margin" Value="12 6 12 6"/>
+                    </Style>
+                    <Thickness x:Key="borderMiddle">0 6 0 6</Thickness>
+                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
@@ -23,16 +31,24 @@
             <Border Grid.Row="0">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <Border Grid.Column="0">
-                        <controls:EnumerationBox x:Name="enumerationBox"/>
+                        <Border Style="{StaticResource borderText}">
+                            <controls:EnumerationBox x:Name="enumerationBox" BorderThickness="0"/>
+                        </Border>
                     </Border>
-                    <GridSplitter Grid.Column="1" ResizeDirection="Columns"/>
+                    <Border Grid.Column="1">
+                        <Border Style="{StaticResource borderText}" Margin="{StaticResource borderMiddle}">
+                            <controls:EnumerationComboBox x:Name="enumerationComboBox" BorderThickness="0"/>
+                        </Border>
+                    </Border>
                     <Border Grid.Column="2">
-                        <controls:EnumerationBitsetBox x:Name="enumerationBitsetBox"/>
+                        <Border Style="{StaticResource borderText}">
+                            <controls:EnumerationBitsetBox x:Name="enumerationBitsetBox" BorderThickness="0"/>
+                        </Border>
                     </Border>
                 </Grid>
             </Border>

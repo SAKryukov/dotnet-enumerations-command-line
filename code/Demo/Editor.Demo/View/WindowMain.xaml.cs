@@ -6,10 +6,12 @@
 
         public WindowMain() {
             InitializeComponent();
-            enumerationBitsetBox.TargetObjectName = "bitset Options";
-            enumerationBitsetBox.Target = bitsetOption;
             enumerationBox.TargetObjectName = "value Option";
             enumerationBox.Target = valueOption;
+            enumerationComboBox.Target = valueOptionCombo;
+            enumerationComboBox.TargetObjectName = enumerationBox.TargetObjectName;
+            enumerationBitsetBox.TargetObjectName = "bitset Options";
+            enumerationBitsetBox.Target = bitsetOption;
         } //WindowMain
 
         protected override void OnContentRendered(EventArgs eventArgs) {
@@ -18,6 +20,7 @@
 
         Main.BitsetOption bitsetOption = default;
         Main.ValueOption valueOption = default;
+        Main.ValueOption valueOptionCombo = default;
 
     } //class WindowMain
 

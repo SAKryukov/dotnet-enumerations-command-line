@@ -15,15 +15,15 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Border Grid.Row="0" Style="{StaticResource borderName}">
-            <TextBlock x:Name="textBlockName"/>
+            <TextBlock x:Name="textBlockName" Style="{StaticResource texBlockName}"/>
         </Border>
         <Border Grid.Row="1">
             <StackPanel>
-                <ListBox x:Name="listBox"/>
+                <ListBox x:Name="listBox" BorderThickness="0"/>
             </StackPanel>
         </Border>
         <Border Grid.Row="2" Style="{StaticResource borderValue}">
-            <TextBlock x:Name="textBlockValue"/>
+            <TextBlock x:Name="textBlockValue" Style="{StaticResource texBlockValue}"/>
         </Border>
     </Grid>
 </UserControl>
