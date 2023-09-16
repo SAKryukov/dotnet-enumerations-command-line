@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <RootNamespace>SA.Test.CommandLine</RootNamespace>
+    <AssemblyTitle>$(AssemblyTitle): Command Line</AssemblyTitle>
     <OutputType>WinExe</OutputType>
     <TargetFramework>$(TargetFramework)-windows</TargetFramework>
     <UseWPF>true</UseWPF>

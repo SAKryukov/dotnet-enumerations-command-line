@@ -38,8 +38,8 @@
             samplerName = Path.ChangeExtension(pipeName, Main.DefinitionSet.extensionExecutable);
         } //WindowMain
 
-        protected override void OnContentRendered(EventArgs e) {
-            base.OnContentRendered(e);
+        protected override void OnContentRendered(EventArgs eventArgs) {
+            base.OnContentRendered(eventArgs);
             Keyboard.Focus(textBoxCommandLine);
         } //OnContentRendered
 

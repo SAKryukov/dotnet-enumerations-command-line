@@ -76,8 +76,8 @@
                 list.Add(Main.DefinitionSet.Documentation.FormatDescripton(option.DisplayName));
         } //ShowOption
 
-        protected override void OnContentRendered(EventArgs e) {
-            base.OnContentRendered(e);
+        protected override void OnContentRendered(EventArgs eventArgs) {
+            base.OnContentRendered(eventArgs);
             if (comboBoxCulture.Items.Count > 1)
                 Keyboard.Focus(comboBoxCulture);
         } //OnContentRendered

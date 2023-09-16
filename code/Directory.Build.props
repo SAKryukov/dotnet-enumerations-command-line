@@ -10,7 +10,7 @@
     <Product>Enumerations</Product>
     <Description>Enumerations that really enumerate + Command-line utility</Description>
     <Company>SA</Company>
-    <AssemblyTitle>$(Product) Demo</AssemblyTitle>
+    <AssemblyTitle>$(Product)</AssemblyTitle>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
