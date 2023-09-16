@@ -15,12 +15,14 @@
         void SetTarget(object value) {
             memberList.Clear();
             stackPanelItems.Children.Clear();
+            unsignedUnderlyingValue = 0;
+            signedUnderlyingValue = 0;
+            target = value;
             if (value == null) return;
             enumType = value.GetType();
             if (!enumType.IsEnum)
                 return;
             underlyingType = Enum.GetUnderlyingType(enumType);
-            target = value;
             SetSigned();
             if (isSigned)
                 signedUnderlyingValue = (long)Convert.ChangeType(value, typeof(long));
