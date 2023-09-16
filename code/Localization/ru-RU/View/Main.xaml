@@ -1,4 +1,4 @@
-﻿<FrameworkContentElement x:Class="SA.Test.CommandLine.View.WindowMain"
+﻿<FrameworkContentElement x:Class="SA.Plugin.Localization.Main"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:system="clr-namespace:System;assembly=netstandard"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
