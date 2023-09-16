@@ -28,14 +28,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Border Grid.Column="0">
-                        <StackPanel>
-                            <ListBox BorderThickness="0">
-                                <ListBoxItem>1</ListBoxItem>
-                                <ListBoxItem>2</ListBoxItem>
-                                <ListBoxItem>3</ListBoxItem>
-                                <ListBoxItem>4</ListBoxItem>
-                            </ListBox>
-                        </StackPanel>
+                        <controls:EnumerationBox x:Name="enumerationBox"/>
                     </Border>
                     <GridSplitter Grid.Column="1" ResizeDirection="Columns"/>
                     <Border Grid.Column="2">

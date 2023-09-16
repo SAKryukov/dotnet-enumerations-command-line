@@ -17,7 +17,9 @@
             stackPanelItems.Children.Clear();
             unsignedUnderlyingValue = 0;
             signedUnderlyingValue = 0;
+            textBlockValue.Text = null;
             target = value;
+            textBlockValue.Text = value.ToString(); // SA??? make it DisplayName
             if (value == null) return;
             enumType = value.GetType();
             if (!enumType.IsEnum)
@@ -40,15 +42,14 @@
         void Populate() {
             int index = 0;
             foreach(Enumerations.EnumerationItemBase item in memberList) {
-                CheckBox checkbox = new() { Content = item.DisplayName, DataContext = index };
+                CheckBox checkbox = new() { Content = item.DisplayName, DataContext = index++ };
                 checkbox.Checked += (sender, _) => CheckboxHandler(sender as CheckBox, isChecked: true);
                 checkbox.Unchecked += (sender, _) => CheckboxHandler(sender as CheckBox, isChecked: false);
-                ++index;
                 stackPanelItems.Children.Add(checkbox);
             } //loop
         } //Populate
 
-        #region mostDifficultPart
+        #region most difficult part
         void CheckboxHandler(CheckBox checkbox, bool isChecked = false) {
             int index = (int)checkbox.DataContext;
             var value = memberList[index].GenericEnumValue;
@@ -67,7 +68,7 @@
                     unsignedUnderlyingValue &= ~ulongValue;
                 target = Enum.ToObject(enumType, unsignedUnderlyingValue);
             } //if
-            textBlockValue.Text = target.ToString();
+            textBlockValue.Text = target.ToString(); // SA??? make it DisplayName
         } //CheckboxHandler
         void SetSigned() {
             sbyte testSignValue = -1;
@@ -78,7 +79,7 @@
                 isSigned = false;
             } //exception
         } //SetSigned
-        #endregion mostDifficultPart
+        #endregion most difficult part
 
         public object Target {
             get => target;
@@ -87,6 +88,15 @@
             } //Target set
         } //set
 
+        public string TargetObjectName {
+            get => targetObjectName;
+            set {
+                targetObjectName = value;
+                textBlockName.Text = value;
+            } //set TargetObjectName 
+        } //TargetObjectName 
+
+        string targetObjectName;
         object target;
         Type enumType, underlyingType;
         bool isSigned;
