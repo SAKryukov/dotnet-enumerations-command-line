@@ -55,7 +55,7 @@
                             </Trigger>
                         </Style.Triggers>
                     </Style>
-                    <Style TargetType="GridSplitter">
+                    <Style x:Key="gridSplitter" TargetType="GridSplitter">
                         <Style.Triggers>
                             <Trigger Property="ResizeDirection" Value="Rows">
                                 <Setter Property="Height" Value="{StaticResource splitterSize}"/>
@@ -123,7 +123,7 @@
                             </TreeViewItem>
                         </TreeView>
                     </Border>
-                    <GridSplitter Grid.Column="1" ResizeDirection="Columns"/>
+                    <GridSplitter Grid.Column="1" ResizeDirection="Columns" Style="{StaticResource gridSplitter}"/>
                     <Border Grid.Column="2" Background="Azure">
                         <TreeView>
                             <TreeViewItem Header="Errors">
