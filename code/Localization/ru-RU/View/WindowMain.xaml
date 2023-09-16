@@ -20,7 +20,7 @@
         <system:String x:Key="LogFile">"Имя файла журнала</system:String>
         <system:String x:Key="LogFileD">Имя файла для документирования событий; по умолчанию «application.log.txt»</system:String>
         <system:String x:Key="Default">По умолчанию</system:String>
-        <system:String x:Key="DefaultD">Если опция задана, все используются все опции по умолчанию</system:String>
+        <system:String x:Key="DefaultD">Если опция задана, используются все опции по умолчанию</system:String>
         <system:String x:Key="Recursive">Рекурсивно</system:String>
         <system:String x:Key="RecursiveD">Если опция задана, файлы входная директория ищутся рекурсивно</system:String>
         <system:String x:Key="CreateOutputDirectory">Создать выходную директорию</system:String>

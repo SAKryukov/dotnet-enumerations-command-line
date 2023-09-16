@@ -12,6 +12,10 @@ namespace SA.Agnostic.Enumerations {
     using System;
     using FieldInfo = System.Reflection.FieldInfo;
 
+    public interface IStringAttribute {
+        (string name, string description) this[string name] { get; }
+    } //interface IStringAttribute
+
     public abstract class StringAttribute : Attribute {
         public StringAttribute(string value) { this.value = value; }
         public StringAttribute(Type type) { this.type = type; }
