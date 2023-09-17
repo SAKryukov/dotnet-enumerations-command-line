@@ -7,14 +7,11 @@ namespace SA.Agnostic.UI.Controls {
         public EnumerationBox() {
             SetupResourceDictionary();
             Grid gridOuter = new();
-            StyledBorderName borderName = new();
-            textBlockName = new();
             borderName.Child = textBlockName;
             Border borderListBox = new();
             listBox = new() { BorderThickness = new Thickness(0) };
             borderListBox.Child = listBox;
             StyledBorderValue borderValue = new();
-            textBlockValue = new();
             borderValue.Child = textBlockValue;
             SetupRows(gridOuter,
                 new bool[] { false, false, false },
@@ -53,10 +50,15 @@ namespace SA.Agnostic.UI.Controls {
 
         #region property
         public static readonly DependencyProperty EnumerationObjectNameProperty = RegisterEnumerationObjectNameProperty(typeof(EnumerationBox));
+        public static readonly DependencyProperty IsLabelVisibleProperty = RegisterIsLabelVisibleProperty(typeof(EnumerationBox));
         new public string EnumerationObjectName {
             get => (string)GetValue(EnumerationObjectNameProperty);
             set => SetValue(EnumerationObjectNameProperty, value);
         } //EnumerationObjectName
+        new public bool IsLabelVisible {
+            get => (bool)GetValue(IsLabelVisibleProperty);
+            set => SetValue(IsLabelVisibleProperty, value);
+        } //IsLabelVisible
         #endregion property
 
         readonly ListBox listBox;

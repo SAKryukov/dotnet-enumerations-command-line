@@ -7,6 +7,7 @@
     using ApplicationSatelliteAssemblyIndex = Agnostic.UI.ApplicationSatelliteAssemblyIndex;
     using AdvancedApplicationBase = Agnostic.UI.AdvancedApplicationBase;
     using Keyboard = System.Windows.Input.Keyboard;
+    using EnumerationEditorBase = Agnostic.UI.Controls.EnumerationEditorBase;
 
     public partial class WindowMain : Window {
 
@@ -45,6 +46,13 @@
             enumerationBitsetBox.Target = bitsetOption;
             enumerationBox.Target = valueOption;
             enumerationComboBox.Target = valueOptionCombo;
+            void SetVisibility(bool value) {
+                enumerationBitsetBox.IsLabelVisible = value;
+                enumerationBox.IsLabelVisible = value;
+                enumerationComboBox.IsLabelVisible = value;
+            } //SetVisibility
+            CheckBoxLabelVisibility.Checked += (_, _) => SetVisibility(true); 
+            CheckBoxLabelVisibility.Unchecked += (_, _) => SetVisibility(false);
         } //PopulateEnumerations
 
         readonly Main.BitsetOption bitsetOption = default;

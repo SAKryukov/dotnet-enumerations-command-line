@@ -57,17 +57,17 @@
                     </Grid.ColumnDefinitions>
                     <Border Grid.Column="0">
                         <Border Style="{StaticResource borderText}">
-                            <controls:EnumerationBox x:Name="enumerationBox" EnumerationObjectName="{DynamicResource ListFruitChoice}"/>
+                            <controls:EnumerationBox x:Name="enumerationBox" EnumerationObjectName="{DynamicResource ListFruitChoice}" IsLabelVisible="True"/>
                         </Border>
                     </Border>
                     <Border Grid.Column="1">
                         <Border Style="{StaticResource borderText}" Margin="{StaticResource borderMiddle}">
-                            <controls:EnumerationComboBox x:Name="enumerationComboBox" EnumerationObjectName="{DynamicResource ComboFruitChoice}"/>
+                            <controls:EnumerationComboBox x:Name="enumerationComboBox" EnumerationObjectName="{DynamicResource ComboFruitChoice}" IsLabelVisible="True"/>
                         </Border>
                     </Border>
                     <Border Grid.Column="2">
                         <Border Style="{StaticResource borderText}">
-                            <controls:EnumerationBitsetBox x:Name="enumerationBitsetBox" EnumerationObjectName="{DynamicResource BitsetOptions}"/>
+                            <controls:EnumerationBitsetBox x:Name="enumerationBitsetBox" EnumerationObjectName="{DynamicResource BitsetOptions}" IsLabelVisible="True"/>
                         </Border>
                     </Border>
                 </Grid>
@@ -75,6 +75,9 @@
             <StatusBar Grid.Row="1">
                 <StatusBarItem>
                     <ComboBox x:Name="comboBoxCulture"/>
+                </StatusBarItem>
+                <StatusBarItem VerticalContentAlignment="Center">
+                    <CheckBox x:Name="CheckBoxLabelVisibility" IsChecked="True">_Labels</CheckBox>
                 </StatusBarItem>
             </StatusBar>
         </Grid>

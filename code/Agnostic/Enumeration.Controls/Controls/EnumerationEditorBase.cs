@@ -36,6 +36,21 @@
                     }));
         } //RegisterEnumerationObjectNameProperty
         public string EnumerationObjectName { get; set; }
+        //
+        private protected static DependencyProperty RegisterIsLabelVisibleProperty(Type ownerType) {
+            return DependencyProperty.Register(
+                name: nameof(IsLabelVisible),
+                propertyType: typeof(bool),
+                ownerType: ownerType,
+                typeMetadata: new FrameworkPropertyMetadata(
+                    (sender, eventArgs) => {
+                        if (sender is not EnumerationEditorBase dependencyObject) return;
+                        dependencyObject.borderName.Visibility = (bool)eventArgs.NewValue
+                            ? Visibility.Visible
+                            : Visibility.Collapsed;
+                    }));
+        } //RegisterIsLabelVisibleProperty
+        public bool IsLabelVisible { get; set; }
 
         public object Target {
             get => target;
@@ -46,9 +61,10 @@
 
         private protected object target;
         private protected Type enumType;
-        private protected MemberList memberList = new();
-        private protected StyledTextBlockName textBlockName;
-        private protected StyledTextBlockValue textBlockValue;
+        private protected readonly MemberList memberList = new();
+        private protected readonly StyledBorderName borderName = new() { Visibility = Visibility.Collapsed };
+        private protected readonly StyledTextBlockName textBlockName = new();
+        private protected readonly StyledTextBlockValue textBlockValue = new();
 
     } //EnumerationEditorBase
 

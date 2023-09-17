@@ -11,13 +11,10 @@ namespace SA.Agnostic.UI.Controls {
         public EnumerationBitsetBox() {
             SetupResourceDictionary();
             Grid gridOuter = new();
-            StyledBorderName borderName = new();
-            textBlockName = new();
             borderName.Child = textBlockName;
             Border borderListBox = new();
             borderListBox.Child = stackPanelItems;
             StyledBorderValue borderValue = new();
-            textBlockValue = new();
             borderValue.Child = textBlockValue;
             SetupRows(gridOuter,
                 new bool[] { false, false, true, false },
@@ -108,10 +105,15 @@ namespace SA.Agnostic.UI.Controls {
 
         #region property
         public static readonly DependencyProperty EnumerationObjectNameProperty = RegisterEnumerationObjectNameProperty(typeof(EnumerationBitsetBox));
+        public static readonly DependencyProperty IsLabelVisibleProperty = RegisterIsLabelVisibleProperty(typeof(EnumerationBitsetBox));
         new public string EnumerationObjectName {
             get => (string)GetValue(EnumerationObjectNameProperty);
             set => SetValue(EnumerationObjectNameProperty, value);
         } //EnumerationObjectName
+        new public bool IsLabelVisible {
+            get => (bool)GetValue(IsLabelVisibleProperty);
+            set => SetValue(IsLabelVisibleProperty, value);
+        } //IsLabelVisible
         #endregion property
 
         Type underlyingType;
