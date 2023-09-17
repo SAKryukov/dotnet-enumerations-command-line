@@ -6,7 +6,11 @@
 
   <ItemGroup>
     <Compile Remove="*\**" />
-    <Compile Include="Core\**" />
+    <Compile Include="CommandLine\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="Agnostic.Enumerations.csproj" />
   </ItemGroup>
 
 </Project>
