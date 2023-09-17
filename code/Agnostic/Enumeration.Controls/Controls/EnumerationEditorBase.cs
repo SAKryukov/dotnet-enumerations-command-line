@@ -12,7 +12,6 @@
         } //SetupResourceDictionary
 
         private protected abstract void SetTarget(object value);
-<<<<<<< HEAD
 
         private protected static void SetupRows(Grid grid, bool[] stars, UIElement[] children) {
             for (int index = 0; index < stars.Length; ++index)
@@ -24,8 +23,6 @@
                 grid.Children.Add(children[index]);
             } //loop
         } //SetupRows
-=======
->>>>>>> 07d5ad12d7cf14752e2819446ce3a79f4b2389b9
 
         private protected static DependencyProperty RegisterEnumerationObjectNameProperty(Type ownerType) {
             return DependencyProperty.Register(
