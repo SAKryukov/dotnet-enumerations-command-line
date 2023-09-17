@@ -1,7 +1,6 @@
 namespace SA.Agnostic.UI.Controls {
     using System.Windows;
     using System.Windows.Controls;
-    using MemberList = System.Collections.Generic.List<Enumerations.EnumerationItemBase>;
     using Type = System.Type;
     using Enum = System.Enum;
     using Convert = System.Convert;
@@ -12,10 +11,6 @@ namespace SA.Agnostic.UI.Controls {
         public EnumerationBitsetBox() {
             SetupResourceDictionary();
             Grid gridOuter = new();
-            gridOuter.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
-            gridOuter.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
-            gridOuter.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
-            gridOuter.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
             StyledBorderName borderName = new();
             textBlockName = new();
             borderName.Child = textBlockName;
@@ -25,6 +20,10 @@ namespace SA.Agnostic.UI.Controls {
             textBlockValue = new();
             borderValue.Child = textBlockValue;
             int index = 0;
+            gridOuter.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+            gridOuter.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+            gridOuter.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
+            gridOuter.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
             foreach (Border border in new Border[] { borderName, borderListBox, new Border(), borderValue }) {
                 Grid.SetRow(border, index++);
                 gridOuter.Children.Add(border);
@@ -32,12 +31,7 @@ namespace SA.Agnostic.UI.Controls {
             Child = gridOuter;
         } //EditorPrototype
 
-        void SetupResourceDictionary() {
-            ResourceDictionarySource source = new();
-            Resources = source.Resources;
-        } //SetupResourceDictionary
-
-        void SetTarget(object value) {
+        private protected override void SetTarget(object value) {
             memberList.Clear();
             stackPanelItems.Children.Clear();
             unsignedUnderlyingValue = 0;
@@ -118,13 +112,6 @@ namespace SA.Agnostic.UI.Controls {
 
         #endregion most difficult part
 
-        public object Target {
-            get => target;
-            set {
-                SetTarget(value);
-            } //Target set
-        } //set
-
         #region property
         public static readonly DependencyProperty EnumerationObjectNameProperty = RegisterEnumerationObjectNameProperty(typeof(EnumerationBitsetBox));
         new public string EnumerationObjectName {
@@ -133,12 +120,10 @@ namespace SA.Agnostic.UI.Controls {
         } //EnumerationObjectName
         #endregion property
 
-        object target;
-        Type enumType, underlyingType;
+        Type underlyingType;
         bool isSigned;
         ulong unsignedUnderlyingValue;
         long signedUnderlyingValue;
-        readonly MemberList memberList = new();
         readonly StackPanel stackPanelItems = new() { Orientation = Orientation.Vertical };
 
     } //EnumerationBitsetBox
