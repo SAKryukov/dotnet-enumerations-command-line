@@ -4,7 +4,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <FrameworkContentElement.Resources>
         <system:String x:Key="Usage">Использование параметеров командной строки</system:String>
-        <system:String x:Key="UsageDescription">Файл_приложения { Строковый_параметр | Ключ | Файл }</system:String>
+        <system:String x:Key="UsageDescription">Файл_приложения { -|/Строковый_параметр | -|/Ключ | Файл }</system:String>
         <system:String x:Key="Switches">Ключи</system:String>
         <system:String x:Key="Values">Строковые параметры</system:String>
         <system:String x:Key="InputDirectory">Входная директория</system:String>

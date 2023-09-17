@@ -10,7 +10,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary>
                     <system:String x:Key="Usage">Usage</system:String>
-                    <system:String x:Key="UsageDescription">Application { Value | Switch | File }</system:String>
+                    <system:String x:Key="UsageDescription">Application { -|/Value | -|/Switch | File }</system:String>
                     <system:String x:Key="Switches">Switches</system:String>
                     <system:String x:Key="Values">Values</system:String>
                 </ResourceDictionary>

@@ -2,6 +2,7 @@
     using System;
     using System.Windows;
     using System.IO.Pipes;
+    using CheckBox = System.Windows.Controls.CheckBox;
     using Process = System.Diagnostics.Process;
     using StringList = System.Collections.Generic.List<string>;
     using Keyboard = System.Windows.Input.Keyboard;
@@ -19,13 +20,14 @@
         public WindowMain() {
             InitializeComponent();
             documentation = new();
-            buttonParse.Click += (_, _) => Parse();
+            textBoxCommandLine.TextChanged += (_, _) => Parse();
             buttonDocumentation.Click += (_, _) => documentation.ShowDocumentation(this);
+            foreach(CheckBox checkbox in new CheckBox [] { checkBoxCaseSensitiveKeys, checkBoxCaseSensitiveAbbreviations, checkBoxCaseSensitiveFiles }) {
+                checkbox.Checked += (_, _) => Parse();
+                checkbox.Unchecked += (_, _) => Parse();
+            }; //loop
             PreviewKeyDown += (_, eventArgs) => {
-                if ((eventArgs.Key == Key.Enter) &&
-                (Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl)))
-                    Parse();
-                else if (eventArgs.Key == Key.F1)
+                if (eventArgs.Key == Key.F1)
                     documentation.ShowDocumentation(this);
             }; //PreviewKeyDown
             string name = System.Reflection.Assembly.GetEntryAssembly().Location;
@@ -40,6 +42,7 @@
 
         protected override void OnContentRendered(EventArgs eventArgs) {
             base.OnContentRendered(eventArgs);
+            Parse();
             Keyboard.Focus(textBoxCommandLine);
         } //OnContentRendered
 
