@@ -7,15 +7,14 @@ namespace SA.Agnostic.UI.Controls {
         public EnumerationBox() {
             SetupResourceDictionary();
             Grid gridOuter = new();
-            borderName.Child = textBlockName;
             Border borderListBox = new();
             listBox = new() { BorderThickness = new Thickness(0) };
             borderListBox.Child = listBox;
             StyledBorderValue borderValue = new();
             borderValue.Child = textBlockValue;
             SetupRows(gridOuter,
-                new bool[] { false, false, false },
-                new UIElement[] { borderName, borderListBox, borderValue });
+                new bool[] { false, false },
+                new UIElement[] { borderListBox, borderValue });
             Child = gridOuter;
         } //EditorPrototype
 
@@ -47,19 +46,6 @@ namespace SA.Agnostic.UI.Controls {
             }; //listBox.SelectionChanged
             listBox.SelectedIndex = indexToSelect;
         } //Populate
-
-        #region property
-        public static readonly DependencyProperty EnumerationObjectNameProperty = RegisterEnumerationObjectNameProperty(typeof(EnumerationBox));
-        public static readonly DependencyProperty IsLabelVisibleProperty = RegisterIsLabelVisibleProperty(typeof(EnumerationBox));
-        public override string EnumerationObjectName {
-            get => (string)GetValue(EnumerationObjectNameProperty);
-            set => SetValue(EnumerationObjectNameProperty, value);
-        } //EnumerationObjectName
-        public override bool IsLabelVisible {
-            get => (bool)GetValue(IsLabelVisibleProperty);
-            set => SetValue(IsLabelVisibleProperty, value);
-        } //IsLabelVisible
-        #endregion property
 
         readonly ListBox listBox;
 

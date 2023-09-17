@@ -7,15 +7,14 @@ namespace SA.Agnostic.UI.Controls {
         public EnumerationComboBox() {
             SetupResourceDictionary();
             Grid gridOuter = new();
-            borderName.Child = textBlockName;
             Border borderListBox = new();
             comboBox = new() { BorderThickness = new Thickness(0) };
             borderListBox.Child = comboBox;
             StyledBorderValue borderValue = new();
             borderValue.Child = textBlockValue;
             SetupRows(gridOuter,
-                new bool[] { false, false, true, false },
-                new UIElement[] { borderName, borderListBox, new Border(), borderValue });
+                new bool[] { false, true, false },
+                new UIElement[] { borderListBox, new Border(), borderValue });
             Child = gridOuter;
         } //EditorPrototype
 
@@ -47,19 +46,6 @@ namespace SA.Agnostic.UI.Controls {
             }; //listBox.SelectionChanged
             comboBox.SelectedIndex = indexToSelect;
         } //Populate
-
-        #region property
-        public static readonly DependencyProperty EnumerationObjectNameProperty = RegisterEnumerationObjectNameProperty(typeof(EnumerationComboBox));
-        public static readonly DependencyProperty IsLabelVisibleProperty = RegisterIsLabelVisibleProperty(typeof(EnumerationComboBox));
-        public override string EnumerationObjectName {
-            get => (string)GetValue(EnumerationObjectNameProperty);
-            set => SetValue(EnumerationObjectNameProperty, value);
-        } //EnumerationObjectName
-        public override bool IsLabelVisible {
-            get => (bool)GetValue(IsLabelVisibleProperty);
-            set => SetValue(IsLabelVisibleProperty, value);
-        } //IsLabelVisible
-        #endregion property
 
         readonly ComboBox comboBox;
 

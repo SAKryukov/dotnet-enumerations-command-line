@@ -46,12 +46,6 @@
             enumerationBitsetBox.Target = bitsetOption;
             enumerationBox.Target = valueOption;
             enumerationComboBox.Target = valueOptionCombo;
-            void SetVisibility(bool value) {
-                foreach (EnumerationEditorBase box in new EnumerationEditorBase[] { enumerationBitsetBox, enumerationBox, enumerationComboBox })
-                    box.IsLabelVisible = value;
-            } //SetVisibility
-            CheckBoxLabelVisibility.Checked += (_, _) => SetVisibility(true); 
-            CheckBoxLabelVisibility.Unchecked += (_, _) => SetVisibility(false);
         } //PopulateEnumerations
 
         readonly Main.BitsetOption bitsetOption = default;

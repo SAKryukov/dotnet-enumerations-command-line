@@ -11,14 +11,13 @@ namespace SA.Agnostic.UI.Controls {
         public EnumerationBitsetBox() {
             SetupResourceDictionary();
             Grid gridOuter = new();
-            borderName.Child = textBlockName;
             Border borderListBox = new();
             borderListBox.Child = stackPanelItems;
             StyledBorderValue borderValue = new();
             borderValue.Child = textBlockValue;
             SetupRows(gridOuter,
-                new bool[] { false, false, true, false },
-                new UIElement[] { borderName, borderListBox, new Border(), borderValue });
+                new bool[] { false, true, false },
+                new UIElement[] { borderListBox, new Border(), borderValue });
             Child = gridOuter;
         } //EditorPrototype
 
@@ -102,19 +101,6 @@ namespace SA.Agnostic.UI.Controls {
         } //StringAttributeUtility
 
         #endregion most difficult part
-
-        #region property
-        public static readonly DependencyProperty EnumerationObjectNameProperty = RegisterEnumerationObjectNameProperty(typeof(EnumerationBitsetBox));
-        public static readonly DependencyProperty IsLabelVisibleProperty = RegisterIsLabelVisibleProperty(typeof(EnumerationBitsetBox));
-        public override string EnumerationObjectName {
-            get => (string)GetValue(EnumerationObjectNameProperty);
-            set => SetValue(EnumerationObjectNameProperty, value);
-        } //EnumerationObjectName
-        public override bool IsLabelVisible {
-            get => (bool)GetValue(IsLabelVisibleProperty);
-            set => SetValue(IsLabelVisibleProperty, value);
-        } //IsLabelVisible
-        #endregion property
 
         Type underlyingType;
         bool isSigned;
