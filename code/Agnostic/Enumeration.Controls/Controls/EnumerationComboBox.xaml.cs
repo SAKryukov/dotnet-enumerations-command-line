@@ -18,7 +18,7 @@
             enumType = value.GetType();
             Type type = typeof(Enumerations.Enumeration<>);
             Type enumerationType = type.MakeGenericType(new Type[] { enumType });
-            object enumeration = System.Activator.CreateInstance(enumerationType);
+            object enumeration = System.Activator.CreateInstance(enumerationType, new object[] { true });
             IEnumerable enumerable = (IEnumerable)enumeration;
             foreach (object @object in enumerable)
                 memberList.Add((Enumerations.EnumerationItemBase)@object);

@@ -69,7 +69,7 @@
             </Border>
             <StatusBar Grid.Row="1">
                 <StatusBarItem>
-                    <Button>en-US</Button>
+                    <ComboBox x:Name="comboBoxCulture"/>
                 </StatusBarItem>
             </StatusBar>
         </Grid>
