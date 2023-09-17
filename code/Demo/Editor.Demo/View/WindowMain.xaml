@@ -12,6 +12,11 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary>
+                    <system:String x:Key="ListFruitChoice">Fruit Choice</system:String>
+                    <system:String x:Key="ComboFruitChoice">Choice</system:String>
+                    <system:String x:Key="BitsetOptions">Bitset Options</system:String>
+                </ResourceDictionary>
+                <ResourceDictionary>
                     <system:String x:Key="None">None</system:String>
                     <system:String x:Key="Recursive">Recursive</system:String>
                     <system:String x:Key="CaseSensitive">Case-sensitive</system:String>
@@ -52,17 +57,17 @@
                     </Grid.ColumnDefinitions>
                     <Border Grid.Column="0">
                         <Border Style="{StaticResource borderText}">
-                            <controls:EnumerationBox x:Name="enumerationBox" BorderThickness="0"/>
+                            <controls:EnumerationBox x:Name="enumerationBox" BorderThickness="0" EnumerationObjectName="{DynamicResource ListFruitChoice}"/>
                         </Border>
                     </Border>
                     <Border Grid.Column="1">
                         <Border Style="{StaticResource borderText}" Margin="{StaticResource borderMiddle}">
-                            <controls:EnumerationComboBox x:Name="enumerationComboBox" BorderThickness="0"/>
+                            <controls:EnumerationComboBox x:Name="enumerationComboBox" BorderThickness="0" EnumerationObjectName="{DynamicResource ComboFruitChoice}"/>
                         </Border>
                     </Border>
                     <Border Grid.Column="2">
                         <Border Style="{StaticResource borderText}">
-                            <controls:EnumerationBitsetBox x:Name="enumerationBitsetBox" BorderThickness="0"/>
+                            <controls:EnumerationBitsetBox x:Name="enumerationBitsetBox" BorderThickness="0" EnumerationObjectName="{DynamicResource BitsetOptions}"/>
                         </Border>
                     </Border>
                 </Grid>

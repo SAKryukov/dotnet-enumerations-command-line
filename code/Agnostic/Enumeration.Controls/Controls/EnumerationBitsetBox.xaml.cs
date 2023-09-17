@@ -85,7 +85,7 @@
             textBlockValue.Text = string.Join(flagDelimiter, list);
         } //DisplayValue
 
-        static string flagDelimiter;
+        readonly static string flagDelimiter;
         [System.Flags] private enum FlagDelimiterTest { Left = 1, Right = 2, } //used to calculate FlagDelimiter from sample
         static EnumerationBitsetBox() {
             flagDelimiter = (FlagDelimiterTest.Left | FlagDelimiterTest.Right).ToString().Replace(FlagDelimiterTest.Left.ToString(), string.Empty).Replace(FlagDelimiterTest.Right.ToString(), string.Empty);
@@ -100,15 +100,22 @@
             } //Target set
         } //set
 
-        public string TargetObjectName {
-            get => targetObjectName;
-            set {
-                targetObjectName = value;
-                textBlockName.Text = value;
-            } //set TargetObjectName 
-        } //TargetObjectName 
+        #region property
+        public static readonly System.Windows.DependencyProperty EnumerationObjectNameProperty = System.Windows.DependencyProperty.Register(
+        name: nameof(EnumerationObjectName),
+        propertyType: typeof(string),
+        ownerType: typeof(EnumerationBitsetBox),
+        typeMetadata: new System.Windows.FrameworkPropertyMetadata(
+            (sender, eventArgs) => {
+                if (sender is not EnumerationBitsetBox dependencyObject) return;
+                dependencyObject.textBlockName.Text = (string)eventArgs.NewValue;
+            }));
+        public string EnumerationObjectName {
+            get => (string)GetValue(EnumerationObjectNameProperty);
+            set => SetValue(EnumerationObjectNameProperty, value);
+        } //EnumerationObjectName
+        #endregion property
 
-        string targetObjectName;
         object target;
         Type enumType, underlyingType;
         bool isSigned;

@@ -1,6 +1,5 @@
 ﻿namespace SA.Agnostic.UI.Controls {
     using System.Windows.Controls;
-    using IEnumerable = System.Collections.IEnumerable;
     using MemberList = System.Collections.Generic.List<Enumerations.EnumerationItemBase>;
     using Type = System.Type;
 
@@ -46,15 +45,22 @@
             } //Target set
         } //set
 
-        public string TargetObjectName {
-            get => targetObjectName;
-            set {
-                targetObjectName = value;
-                textBlockName.Text = value;
-            } //set TargetObjectName 
-        } //TargetObjectName 
+        #region property
+        public static readonly System.Windows.DependencyProperty EnumerationObjectNameProperty = System.Windows.DependencyProperty.Register(
+        name: nameof(EnumerationObjectName),
+        propertyType: typeof(string),
+        ownerType: typeof(EnumerationComboBox),
+        typeMetadata: new System.Windows.FrameworkPropertyMetadata(
+            (sender, eventArgs) => {
+                if (sender is not EnumerationComboBox dependencyObject) return;
+                dependencyObject.textBlockName.Text = (string)eventArgs.NewValue;
+            }));
+        public string EnumerationObjectName {
+            get => (string)GetValue(EnumerationObjectNameProperty);
+            set => SetValue(EnumerationObjectNameProperty, value);
+        } //EnumerationObjectName
+        #endregion property
 
-        string targetObjectName;
         Type enumType;
         private protected object target;
         readonly MemberList memberList = new();

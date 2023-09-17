@@ -42,11 +42,8 @@
         } //PopulateCultures
 
         void PopulateEnumerations() {
-            enumerationBox.TargetObjectName = "Fruit Choice";
             enumerationBox.Target = valueOption;
             enumerationComboBox.Target = valueOptionCombo;
-            enumerationComboBox.TargetObjectName = enumerationBox.TargetObjectName;
-            enumerationBitsetBox.TargetObjectName = "bitset Options";
             enumerationBitsetBox.Target = bitsetOption;
         } //PopulateEnumerations
 
