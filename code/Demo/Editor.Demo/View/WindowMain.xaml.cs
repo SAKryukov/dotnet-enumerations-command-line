@@ -47,9 +47,8 @@
             enumerationBox.Target = valueOption;
             enumerationComboBox.Target = valueOptionCombo;
             void SetVisibility(bool value) {
-                enumerationBitsetBox.IsLabelVisible = value;
-                enumerationBox.IsLabelVisible = value;
-                enumerationComboBox.IsLabelVisible = value;
+                foreach (EnumerationEditorBase box in new EnumerationEditorBase[] { enumerationBitsetBox, enumerationBox, enumerationComboBox })
+                    box.IsLabelVisible = value;
             } //SetVisibility
             CheckBoxLabelVisibility.Checked += (_, _) => SetVisibility(true); 
             CheckBoxLabelVisibility.Unchecked += (_, _) => SetVisibility(false);

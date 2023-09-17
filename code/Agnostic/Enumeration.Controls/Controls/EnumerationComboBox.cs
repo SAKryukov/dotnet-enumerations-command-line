@@ -51,11 +51,11 @@ namespace SA.Agnostic.UI.Controls {
         #region property
         public static readonly DependencyProperty EnumerationObjectNameProperty = RegisterEnumerationObjectNameProperty(typeof(EnumerationComboBox));
         public static readonly DependencyProperty IsLabelVisibleProperty = RegisterIsLabelVisibleProperty(typeof(EnumerationComboBox));
-        new public string EnumerationObjectName {
+        public override string EnumerationObjectName {
             get => (string)GetValue(EnumerationObjectNameProperty);
             set => SetValue(EnumerationObjectNameProperty, value);
         } //EnumerationObjectName
-        new public bool IsLabelVisible {
+        public override bool IsLabelVisible {
             get => (bool)GetValue(IsLabelVisibleProperty);
             set => SetValue(IsLabelVisibleProperty, value);
         } //IsLabelVisible

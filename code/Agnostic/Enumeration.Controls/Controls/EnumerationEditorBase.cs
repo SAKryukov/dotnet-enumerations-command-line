@@ -35,7 +35,7 @@
                         dependencyObject.textBlockName.Text = (string)eventArgs.NewValue;
                     }));
         } //RegisterEnumerationObjectNameProperty
-        public string EnumerationObjectName { get; set; }
+        public abstract string EnumerationObjectName { get; set; }
         //
         private protected static DependencyProperty RegisterIsLabelVisibleProperty(Type ownerType) {
             return DependencyProperty.Register(
@@ -50,7 +50,7 @@
                             : Visibility.Collapsed;
                     }));
         } //RegisterIsLabelVisibleProperty
-        public bool IsLabelVisible { get; set; }
+        public abstract bool IsLabelVisible { get; set; }
 
         public object Target {
             get => target;
