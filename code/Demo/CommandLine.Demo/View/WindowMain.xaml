@@ -34,7 +34,7 @@
                 </ResourceDictionary>
                 <ResourceDictionary Source="pack://application:,,,/Demo.ResourceDictionary.Source;component/Shared.xaml"/>
                 <ResourceDictionary>
-                    <Style TargetType="TreeViewItem">
+                    <Style x:Key="treeViewItemBase" TargetType="TreeViewItem">
                         <Setter Property="IsExpanded" Value="True"/>
                         <Style.Triggers>
                             <Trigger Property="HasItems" Value="True">
@@ -70,15 +70,21 @@
                     </Grid.ColumnDefinitions>
                     <Border Grid.Column="0">
                         <TextBox Grid.Row="1" x:Name="textBoxCommandLine" AcceptsReturn="False" AcceptsTab="False" Background="LightYellow" TextWrapping="Wrap" ToolTip="Command line is parsed as you type">
-                            -R /Q F1 /C+ -InputDirectory: -qwerty:*.wepb /Q F1 F2 /InputFileMask:*.webm /Q+ -R- /LogFile:"my long log file name.Log.txt" /OutputDirectory:\sa\media -/OutputDirectory:.
+                            -R /Q F1 /C+ -InputDirectory: -qwerty:*.wepb /Q F1 F2 /InputFileMask:*.webm /Q+ -R- /LogFile:"my long log file name.Log.txt" /OutputDirectory:\sa\media -/OutputDirectory:. -O:?
                         </TextBox>
                     </Border>
                     <Border Grid.Column="1" Padding="{StaticResource paddingBorderStack}">
                         <StackPanel>
+                            <StackPanel.Resources>
+                                <Style TargetType="CheckBox">
+                                    <Setter Property="IsChecked" Value="True"/>
+                                    <Setter Property="Margin" Value="{StaticResource stackMargin}"/>
+                                </Style>
+                            </StackPanel.Resources>
                             <TextBlock>Case Sensitive:</TextBlock>
-                            <CheckBox x:Name="checkBoxCaseSensitiveKeys" Margin="{StaticResource stackMargin}" IsChecked="True">_Keys</CheckBox>
-                            <CheckBox x:Name="checkBoxCaseSensitiveAbbreviations" Margin="{StaticResource stackMargin}" IsChecked="True">_Abbreviations</CheckBox>
-                            <CheckBox x:Name="checkBoxCaseSensitiveFiles" Margin="{StaticResource stackMargin}" IsChecked="True">_File Names</CheckBox>
+                            <CheckBox x:Name="checkBoxCaseSensitiveKeys">_Keys</CheckBox>
+                            <CheckBox x:Name="checkBoxCaseSensitiveAbbreviations">_Abbreviations</CheckBox>
+                            <CheckBox x:Name="checkBoxCaseSensitiveFiles">_File Names</CheckBox>
                             <Button x:Name="buttonDocumentation" Margin="{StaticResource stackMargin}" ToolTip="F1">_Documentation...</Button>
                         </StackPanel>
                     </Border>
@@ -93,8 +99,11 @@
                     </Grid.ColumnDefinitions>
                     <Border Grid.Column="0">
                         <TreeView>
+                            <TreeView.Resources>
+                                <Style TargetType="{x:Type TreeViewItem}" BasedOn="{StaticResource treeViewItemBase}"/>
+                            </TreeView.Resources>
                             <TreeViewItem Header="Options">
-                                <TreeViewItem x:Name="treeViewItemOptionsSwitch" Header="Switches" IsExpanded="True"/>
+                                <TreeViewItem x:Name="treeViewItemOptionsSwitch" Header="Switches"/>
                                 <TreeViewItem x:Name="treeViewItemOptionsValue" Header="Values"/>
                                 <TreeViewItem x:Name="treeViewItemFiles" Header="Files"/>
                             </TreeViewItem>
@@ -103,6 +112,9 @@
                     <GridSplitter Grid.Column="1" ResizeDirection="Columns"/>
                     <Border Grid.Column="2" Background="Azure">
                         <TreeView>
+                            <TreeView.Resources>
+                                <Style TargetType="{x:Type TreeViewItem}" BasedOn="{StaticResource treeViewItemBase}"/>
+                            </TreeView.Resources>
                             <TreeViewItem Header="Errors">
                                 <TreeViewItem x:Name="treeViewItemUnrecognized" Header="Unrecognized"/>
                                 <TreeViewItem x:Name="treeViewItemRepeatedSwitches" Header="Repeated Switches"/>
