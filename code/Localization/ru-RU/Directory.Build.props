@@ -2,7 +2,8 @@
     <Import Project="$(SolutionDir)\Directory.Build.props"/>
 
   <PropertyGroup>
-    <AssemblyName>Demo.Localization.resources</AssemblyName>
+    <OutputPath>$(OutputPath)\ru-RU</OutputPath>
+    <AssemblyName>$([System.IO.Path]::GetFileName($(MSBuildProjectDirectory))).resources</AssemblyName>
   </PropertyGroup>
 
   <PropertyGroup>
