@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputPath>$(OutputPath)\ru-RU</OutputPath>
+    <AssemblyName>Editor.Demo.resources</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Agnostic\Core\Agnostic.Core.csproj" />
+    <ProjectReference Include="..\..\..\Agnostic\Ui\Agnostic.UI.csproj" />
+  </ItemGroup>
+
+</Project>

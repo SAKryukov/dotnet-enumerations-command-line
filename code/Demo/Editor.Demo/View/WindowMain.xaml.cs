@@ -6,6 +6,7 @@
 
         public WindowMain() {
             InitializeComponent();
+            //Agnostic.UI.AdvancedApplicationBase.Current.Localize(new System.Globalization.CultureInfo("ru-RU"));
             enumerationBox.TargetObjectName = "Fruit Choice";
             enumerationBox.Target = valueOption;
             enumerationComboBox.Target = valueOptionCombo;

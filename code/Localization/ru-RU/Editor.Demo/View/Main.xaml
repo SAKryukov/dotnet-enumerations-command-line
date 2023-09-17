@@ -1,0 +1,19 @@
+﻿<FrameworkContentElement x:Class="SA.Plugin.Localization.Main"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:system="clr-namespace:System;assembly=netstandard"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <FrameworkContentElement.Resources>
+        <system:String x:Key="None">Не использовать ни одну из опций</system:String>
+        <system:String x:Key="Recursive">Рекурсивный</system:String>
+        <system:String x:Key="CaseSensitive">Нечувствительный к регистру букв</system:String>
+        <system:String x:Key="TimeCritical">Критичный ко времени исполнения</system:String>
+        <system:String x:Key="PasswordProtected">Защищённый паролем</system:String>
+        <system:String x:Key="All">Все опции</system:String>
+        <system:String x:Key="Default">Выбор опций по умолчания</system:String>
+        <system:String x:Key="Apple">Яблоко</system:String>
+        <system:String x:Key="MandarinOrange">Мандарин</system:String>
+        <system:String x:Key="Avocado">Авокадо</system:String>
+        <system:String x:Key="BlackRaspberry">Чёрная малина</system:String>
+        <system:String x:Key="RedRaspberry">Красная малина</system:String>
+    </FrameworkContentElement.Resources>
+</FrameworkContentElement>
