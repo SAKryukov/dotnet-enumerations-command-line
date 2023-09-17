@@ -19,6 +19,11 @@ namespace SA.Agnostic.UI.Controls {
             StyledBorderValue borderValue = new();
             textBlockValue = new();
             borderValue.Child = textBlockValue;
+<<<<<<< HEAD
+            SetupRows(gridOuter,
+                new bool[] { false, false, true, false },
+                new UIElement[] { borderName, borderListBox, new Border(), borderValue });
+=======
             int index = 0;
             gridOuter.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
             gridOuter.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
@@ -28,6 +33,7 @@ namespace SA.Agnostic.UI.Controls {
                 Grid.SetRow(border, index++);
                 gridOuter.Children.Add(border);
             } //loop
+>>>>>>> 07d5ad12d7cf14752e2819446ce3a79f4b2389b9
             Child = gridOuter;
         } //EditorPrototype
 

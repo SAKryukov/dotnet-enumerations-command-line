@@ -13,7 +13,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary>
                     <system:String x:Key="ListFruitChoice">Fruit Choice</system:String>
-                    <system:String x:Key="ComboFruitChoice">Choice</system:String>
+                    <system:String x:Key="ComboFruitChoice">Fruits</system:String>
                     <system:String x:Key="BitsetOptions">Bitset Options</system:String>
                 </ResourceDictionary>
                 <ResourceDictionary>
