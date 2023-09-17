@@ -4,7 +4,7 @@ namespace SA.Agnostic.UI.Controls {
     using MemberList = System.Collections.Generic.List<Enumerations.EnumerationItemBase>;
     using Type = System.Type;
 
-    public class EnumerationComboBox : Border {
+    public class EnumerationComboBox : EnumerationEditorBase {
 
         public EnumerationComboBox() {
             SetupResourceDictionary();
@@ -72,16 +72,8 @@ namespace SA.Agnostic.UI.Controls {
         } //set
 
         #region property
-        public static readonly DependencyProperty EnumerationObjectNameProperty = DependencyProperty.Register(
-        name: nameof(EnumerationObjectName),
-        propertyType: typeof(string),
-        ownerType: typeof(EnumerationComboBox),
-        typeMetadata: new FrameworkPropertyMetadata(
-            (sender, eventArgs) => {
-                if (sender is not EnumerationComboBox dependencyObject) return;
-                dependencyObject.textBlockName.Text = (string)eventArgs.NewValue;
-            }));
-        public string EnumerationObjectName {
+        public static readonly DependencyProperty EnumerationObjectNameProperty = RegisterEnumerationObjectNameProperty(typeof(EnumerationComboBox));
+        new public string EnumerationObjectName {
             get => (string)GetValue(EnumerationObjectNameProperty);
             set => SetValue(EnumerationObjectNameProperty, value);
         } //EnumerationObjectName
@@ -90,9 +82,6 @@ namespace SA.Agnostic.UI.Controls {
         Type enumType;
         private protected object target;
         readonly MemberList memberList = new();
-
-        readonly StyledTextBlockName textBlockName;
-        readonly StyledTextBlockValue textBlockValue;
         readonly ComboBox comboBox;
 
     } //EnumerationComboBox

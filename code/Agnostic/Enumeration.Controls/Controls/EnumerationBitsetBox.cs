@@ -7,7 +7,7 @@ namespace SA.Agnostic.UI.Controls {
     using Convert = System.Convert;
     using StringList = System.Collections.Generic.List<string>;
 
-    public class EnumerationBitsetBox : Border {
+    public class EnumerationBitsetBox : EnumerationEditorBase {
 
         public EnumerationBitsetBox() {
             SetupResourceDictionary();
@@ -126,23 +126,13 @@ namespace SA.Agnostic.UI.Controls {
         } //set
 
         #region property
-        public static readonly DependencyProperty EnumerationObjectNameProperty = DependencyProperty.Register(
-        name: nameof(EnumerationObjectName),
-        propertyType: typeof(string),
-        ownerType: typeof(EnumerationBitsetBox),
-        typeMetadata: new FrameworkPropertyMetadata(
-            (sender, eventArgs) => {
-                if (sender is not EnumerationBitsetBox dependencyObject) return;
-                dependencyObject.textBlockName.Text = (string)eventArgs.NewValue;
-            }));
-        public string EnumerationObjectName {
+        public static readonly DependencyProperty EnumerationObjectNameProperty = RegisterEnumerationObjectNameProperty(typeof(EnumerationBitsetBox));
+        new public string EnumerationObjectName {
             get => (string)GetValue(EnumerationObjectNameProperty);
             set => SetValue(EnumerationObjectNameProperty, value);
         } //EnumerationObjectName
         #endregion property
 
-        readonly StyledTextBlockName textBlockName;
-        readonly StyledTextBlockValue textBlockValue;
         object target;
         Type enumType, underlyingType;
         bool isSigned;

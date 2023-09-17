@@ -4,7 +4,7 @@ namespace SA.Agnostic.UI.Controls {
     using MemberList = System.Collections.Generic.List<Enumerations.EnumerationItemBase>;
     using Type = System.Type;
 
-    public class EnumerationBox : Border {
+    public class EnumerationBox : EnumerationEditorBase {
 
         public EnumerationBox() {
             SetupResourceDictionary();
@@ -72,16 +72,8 @@ namespace SA.Agnostic.UI.Controls {
         } //set
 
         #region property
-        public static readonly DependencyProperty EnumerationObjectNameProperty = DependencyProperty.Register(
-        name: nameof(EnumerationObjectName),
-        propertyType: typeof(string),
-        ownerType: typeof(EnumerationBox),
-        typeMetadata: new FrameworkPropertyMetadata(
-            (sender, eventArgs) => {
-                if (sender is not EnumerationBox dependencyObject) return;
-                dependencyObject.textBlockName.Text = (string)eventArgs.NewValue;
-            }));
-        public string EnumerationObjectName {
+        public static readonly DependencyProperty EnumerationObjectNameProperty = RegisterEnumerationObjectNameProperty(typeof(EnumerationBox));
+        new public string EnumerationObjectName {
             get => (string)GetValue(EnumerationObjectNameProperty);
             set => SetValue(EnumerationObjectNameProperty, value);
         } //EnumerationObjectName
@@ -91,8 +83,6 @@ namespace SA.Agnostic.UI.Controls {
         private protected object target;
         readonly MemberList memberList = new();
 
-        readonly StyledTextBlockName textBlockName;
-        readonly StyledTextBlockValue textBlockValue;
         readonly ListBox listBox;
 
     } //EnumerationBox
