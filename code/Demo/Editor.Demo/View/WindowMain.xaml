@@ -111,7 +111,7 @@
                     </Border>
                 </Grid>
             </Border>
-            <StatusBar Grid.Row="1">
+            <StatusBar x:Name="statusBar" Grid.Row="1">
                 <StatusBarItem>
                     <ComboBox x:Name="comboBoxCulture"/>
                 </StatusBarItem>

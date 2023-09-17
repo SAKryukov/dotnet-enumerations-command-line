@@ -30,6 +30,10 @@
 
         CultureInfo[] PopulateCultures() {
             var implementedcultures = ApplicationSatelliteAssemblyIndex.ImplementedCultures;
+            if (implementedcultures.Length < 1) {
+                comboBoxCulture.Visibility = Visibility.Collapsed;
+                return null;
+            } //if
             CultureList list = new(implementedcultures);
             list.Insert(0, System.Threading.Thread.CurrentThread.CurrentUICulture);
             void AddCulture(CultureInfo culture) {
