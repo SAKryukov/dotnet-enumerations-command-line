@@ -1,13 +1,39 @@
-﻿namespace SA.Agnostic.UI.Controls {
+namespace SA.Agnostic.UI.Controls {
+    using System.Windows;
     using System.Windows.Controls;
     using MemberList = System.Collections.Generic.List<Enumerations.EnumerationItemBase>;
     using Type = System.Type;
 
-    public partial class EnumerationBox : UserControl {
+    public class EnumerationBox : Border {
 
         public EnumerationBox() {
-            InitializeComponent();
-        } //EnumerationBox
+            SetupResourceDictionary();
+            Grid gridOuter = new();
+            gridOuter.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+            gridOuter.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+            gridOuter.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
+            gridOuter.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+            StyledBorderName borderName = new();
+            textBlockName = new();
+            borderName.Child = textBlockName;
+            Border borderListBox = new();
+            listBox = new() { BorderThickness = new Thickness(0) };
+            borderListBox.Child = listBox;
+            StyledBorderValue borderValue = new();
+            textBlockValue = new();
+            borderValue.Child = textBlockValue;
+            int index = 0;
+            foreach (Border border in new Border[] { borderName, borderListBox, borderValue }) {
+                Grid.SetRow(border, index++);
+                gridOuter.Children.Add(border);
+            } //loop
+            Child = gridOuter;
+        } //EditorPrototype
+
+        void SetupResourceDictionary() {
+            ResourceDictionarySource source = new();
+            Resources = source.Resources;
+        } //SetupResourceDictionary
 
         void SetTarget(object value) {
             memberList.Clear();
@@ -46,11 +72,11 @@
         } //set
 
         #region property
-        public static readonly System.Windows.DependencyProperty EnumerationObjectNameProperty = System.Windows.DependencyProperty.Register(
+        public static readonly DependencyProperty EnumerationObjectNameProperty = DependencyProperty.Register(
         name: nameof(EnumerationObjectName),
         propertyType: typeof(string),
         ownerType: typeof(EnumerationBox),
-        typeMetadata: new System.Windows.FrameworkPropertyMetadata(
+        typeMetadata: new FrameworkPropertyMetadata(
             (sender, eventArgs) => {
                 if (sender is not EnumerationBox dependencyObject) return;
                 dependencyObject.textBlockName.Text = (string)eventArgs.NewValue;
@@ -65,7 +91,10 @@
         private protected object target;
         readonly MemberList memberList = new();
 
-    } //class EnumerationBox
+        readonly StyledTextBlockName textBlockName;
+        readonly StyledTextBlockValue textBlockValue;
+        readonly ListBox listBox;
+
+    } //EnumerationBox
 
 }
-

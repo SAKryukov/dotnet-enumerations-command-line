@@ -1,16 +1,41 @@
-﻿namespace SA.Agnostic.UI.Controls {
+namespace SA.Agnostic.UI.Controls {
+    using System.Windows;
     using System.Windows.Controls;
+    using MemberList = System.Collections.Generic.List<Enumerations.EnumerationItemBase>;
     using Type = System.Type;
     using Enum = System.Enum;
     using Convert = System.Convert;
-    using MemberList = System.Collections.Generic.List<Enumerations.EnumerationItemBase>;
     using StringList = System.Collections.Generic.List<string>;
 
-    public partial class EnumerationBitsetBox : UserControl {
+    public class EnumerationBitsetBox : Border {
 
         public EnumerationBitsetBox() {
-            InitializeComponent();
-        } //EnumerationBitsetBox()
+            SetupResourceDictionary();
+            Grid gridOuter = new();
+            gridOuter.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+            gridOuter.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+            gridOuter.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
+            gridOuter.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+            StyledBorderName borderName = new();
+            textBlockName = new();
+            borderName.Child = textBlockName;
+            Border borderListBox = new();
+            borderListBox.Child = stackPanelItems;
+            StyledBorderValue borderValue = new();
+            textBlockValue = new();
+            borderValue.Child = textBlockValue;
+            int index = 0;
+            foreach (Border border in new Border[] { borderName, borderListBox, new Border(), borderValue }) {
+                Grid.SetRow(border, index++);
+                gridOuter.Children.Add(border);
+            } //loop
+            Child = gridOuter;
+        } //EditorPrototype
+
+        void SetupResourceDictionary() {
+            ResourceDictionarySource source = new();
+            Resources = source.Resources;
+        } //SetupResourceDictionary
 
         void SetTarget(object value) {
             memberList.Clear();
@@ -36,7 +61,7 @@
 
         void Populate() {
             int index = 0;
-            foreach(Enumerations.EnumerationItemBase item in memberList) {
+            foreach (Enumerations.EnumerationItemBase item in memberList) {
                 CheckBox checkbox = new() { Content = item.DisplayName, DataContext = index++ };
                 checkbox.Checked += (sender, _) => CheckboxHandler(sender as CheckBox, isChecked: true);
                 checkbox.Unchecked += (sender, _) => CheckboxHandler(sender as CheckBox, isChecked: false);
@@ -64,7 +89,7 @@
                     unsignedUnderlyingValue &= ~ulongValue;
                 target = Enum.ToObject(enumType, unsignedUnderlyingValue);
             } //if
-            DisplayValue(); 
+            DisplayValue();
         } //CheckboxHandler
 
         void DisplayValue() {
@@ -101,11 +126,11 @@
         } //set
 
         #region property
-        public static readonly System.Windows.DependencyProperty EnumerationObjectNameProperty = System.Windows.DependencyProperty.Register(
+        public static readonly DependencyProperty EnumerationObjectNameProperty = DependencyProperty.Register(
         name: nameof(EnumerationObjectName),
         propertyType: typeof(string),
         ownerType: typeof(EnumerationBitsetBox),
-        typeMetadata: new System.Windows.FrameworkPropertyMetadata(
+        typeMetadata: new FrameworkPropertyMetadata(
             (sender, eventArgs) => {
                 if (sender is not EnumerationBitsetBox dependencyObject) return;
                 dependencyObject.textBlockName.Text = (string)eventArgs.NewValue;
@@ -116,13 +141,16 @@
         } //EnumerationObjectName
         #endregion property
 
+        readonly StyledTextBlockName textBlockName;
+        readonly StyledTextBlockValue textBlockValue;
         object target;
         Type enumType, underlyingType;
         bool isSigned;
         ulong unsignedUnderlyingValue;
         long signedUnderlyingValue;
         readonly MemberList memberList = new();
+        readonly StackPanel stackPanelItems = new() { Orientation = Orientation.Vertical };
 
-    } //class EnumerationBitsetBox
+    } //EnumerationBitsetBox
 
 }

@@ -57,17 +57,17 @@
                     </Grid.ColumnDefinitions>
                     <Border Grid.Column="0">
                         <Border Style="{StaticResource borderText}">
-                            <controls:EnumerationBox x:Name="enumerationBox" BorderThickness="0" EnumerationObjectName="{DynamicResource ListFruitChoice}"/>
+                            <controls:EnumerationBox x:Name="enumerationBox" EnumerationObjectName="{DynamicResource ListFruitChoice}"/>
                         </Border>
                     </Border>
                     <Border Grid.Column="1">
                         <Border Style="{StaticResource borderText}" Margin="{StaticResource borderMiddle}">
-                            <controls:EnumerationComboBox x:Name="enumerationComboBox" BorderThickness="0" EnumerationObjectName="{DynamicResource ComboFruitChoice}"/>
+                            <controls:EnumerationComboBox x:Name="enumerationComboBox" EnumerationObjectName="{DynamicResource ComboFruitChoice}"/>
                         </Border>
                     </Border>
                     <Border Grid.Column="2">
                         <Border Style="{StaticResource borderText}">
-                            <controls:EnumerationBitsetBox x:Name="enumerationBitsetBox" BorderThickness="0" EnumerationObjectName="{DynamicResource BitsetOptions}"/>
+                            <controls:EnumerationBitsetBox x:Name="enumerationBitsetBox" EnumerationObjectName="{DynamicResource BitsetOptions}"/>
                         </Border>
                     </Border>
                 </Grid>

@@ -42,9 +42,9 @@
         } //PopulateCultures
 
         void PopulateEnumerations() {
+            enumerationBitsetBox.Target = bitsetOption;
             enumerationBox.Target = valueOption;
             enumerationComboBox.Target = valueOptionCombo;
-            enumerationBitsetBox.Target = bitsetOption;
         } //PopulateEnumerations
 
         readonly Main.BitsetOption bitsetOption = default;
