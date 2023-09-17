@@ -16,11 +16,7 @@
             textBlockValue.Text = null;
             target = value;
             enumType = value.GetType();
-            Type type = typeof(Enumerations.Enumeration<>);
-            Type enumerationType = type.MakeGenericType(new Type[] { enumType });
-            object enumeration = System.Activator.CreateInstance(enumerationType, new object[] { true });
-            IEnumerable enumerable = (IEnumerable)enumeration;
-            foreach (object @object in enumerable)
+            foreach (object @object in Helper.CreateEnumerationEnumerator(enumType))
                 memberList.Add((Enumerations.EnumerationItemBase)@object);
             Populate();
         } //SetTarget

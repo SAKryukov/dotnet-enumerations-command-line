@@ -3,8 +3,8 @@
     using Type = System.Type;
     using Enum = System.Enum;
     using Convert = System.Convert;
-    using IEnumerable = System.Collections.IEnumerable;
     using MemberList = System.Collections.Generic.List<Enumerations.EnumerationItemBase>;
+    using StringList = System.Collections.Generic.List<string>;
 
     public partial class EnumerationBitsetBox : UserControl {
 
@@ -19,22 +19,17 @@
             signedUnderlyingValue = 0;
             textBlockValue.Text = null;
             target = value;
-            textBlockValue.Text = value.ToString(); // SA??? make it DisplayName
             if (value == null) return;
             enumType = value.GetType();
             if (!enumType.IsEnum)
                 return;
             underlyingType = Enum.GetUnderlyingType(enumType);
-            SetSigned();
+            isSigned = Helper.TestIfSigned(underlyingType);
             if (isSigned)
                 signedUnderlyingValue = (long)Convert.ChangeType(value, typeof(long));
             else
                 unsignedUnderlyingValue = (ulong)Convert.ChangeType(value, typeof(ulong));
-            Type type = typeof(Enumerations.Enumeration<>);
-            Type enumerationType = type.MakeGenericType(new Type[] { enumType });
-            object enumeration = System.Activator.CreateInstance(enumerationType, new object[] { true });
-            IEnumerable enumerable = (IEnumerable)enumeration;
-            foreach (object @object in enumerable)
+            foreach (object @object in Helper.CreateEnumerationEnumerator(enumType))
                 memberList.Add((Enumerations.EnumerationItemBase)@object);
             Populate();
         } //SetTarget
@@ -47,6 +42,7 @@
                 checkbox.Unchecked += (sender, _) => CheckboxHandler(sender as CheckBox, isChecked: false);
                 stackPanelItems.Children.Add(checkbox);
             } //loop
+            DisplayValue();
         } //Populate
 
         #region most difficult part
@@ -68,17 +64,33 @@
                     unsignedUnderlyingValue &= ~ulongValue;
                 target = Enum.ToObject(enumType, unsignedUnderlyingValue);
             } //if
-            textBlockValue.Text = target.ToString(); // SA??? make it DisplayName
+            DisplayValue(); 
         } //CheckboxHandler
-        void SetSigned() {
-            sbyte testSignValue = -1;
-            try {
-                Convert.ChangeType(testSignValue, underlyingType);
-                isSigned = true;
-            } catch {
-                isSigned = false;
-            } //exception
-        } //SetSigned
+
+        void DisplayValue() {
+            StringList list = new();
+            long longTargetValue = (long)Convert.ChangeType(target, typeof(long));
+            ulong ulongTargetValue = (ulong)Convert.ChangeType(target, typeof(ulong));
+            foreach (Enumerations.EnumerationItemBase item in memberList) {
+                if (isSigned) {
+                    long longValue = (long)Convert.ChangeType(item.GenericEnumValue, typeof(long));
+                    if ((longTargetValue & longValue) != 0)
+                        list.Add(item.DisplayName);
+                } else {
+                    ulong ulongValue = (ulong)Convert.ChangeType(target, typeof(ulong));
+                    if ((ulongTargetValue & ulongValue) != 0)
+                        list.Add(item.DisplayName);
+                } //if
+            } //loop
+            textBlockValue.Text = string.Join(flagDelimiter, list);
+        } //DisplayValue
+
+        static string flagDelimiter;
+        [System.Flags] private enum FlagDelimiterTest { Left = 1, Right = 2, } //used to calculate FlagDelimiter from sample
+        static EnumerationBitsetBox() {
+            flagDelimiter = (FlagDelimiterTest.Left | FlagDelimiterTest.Right).ToString().Replace(FlagDelimiterTest.Left.ToString(), string.Empty).Replace(FlagDelimiterTest.Right.ToString(), string.Empty);
+        } //StringAttributeUtility
+
         #endregion most difficult part
 
         public object Target {
