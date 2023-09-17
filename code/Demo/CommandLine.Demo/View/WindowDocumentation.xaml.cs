@@ -54,8 +54,8 @@
         } //ImplementCopy
 
         void BuildDocumentation() {
-            Agnostic.Enumerations.Enumeration<Main.SwitchOption> switches = new(refresh: true);
-            Agnostic.Enumerations.Enumeration<Main.StringOption> values = new(refresh: true);
+            Agnostic.Enumerations.Enumeration<Main.SwitchOption> switches = new(dynamic: true);
+            Agnostic.Enumerations.Enumeration<Main.StringOption> values = new(dynamic: true);
             StringList stringSwitches = new();
             foreach (var option in switches)
                 ShowOption(stringSwitches, option, isSwitch: true);
