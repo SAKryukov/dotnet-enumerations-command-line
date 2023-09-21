@@ -1,16 +1,9 @@
 ﻿<Project>
+    <Import Project="$(SolutionDir)\Metadata.props"/>
  
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <_customUnifiedVersion>0.1.0.0</_customUnifiedVersion>
-    <!-- can be alpha, beta, RC1, RC2, etc.: -->
-    <_customInformationalVersionSuffix>pre-alpha</_customInformationalVersionSuffix>
     <RootNamespace>SA</RootNamespace>
-    <Copyright>Copyright © 2008-2023 Sergey A Kryukov</Copyright>
-    <Product>Enumerations</Product>
-    <Description>Enumerations that really enumerate + Command-line utility</Description>
-    <Company>SA</Company>
-    <AssemblyTitle>$(Product)</AssemblyTitle>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
@@ -33,9 +26,9 @@
     <WarningsAsErrors></WarningsAsErrors>
     <WarningsNotAsErrors></WarningsNotAsErrors>
 
-    <AssemblyVersion>$(_customUnifiedVersion)</AssemblyVersion>
-    <FileVersion>$(_customUnifiedVersion)</FileVersion>
-    <InformationalVersion>$(_customUnifiedVersion) $(_customInformationalVersionSuffix)</InformationalVersion>
+    <AssemblyVersion>$(CustomUnifiedVersion)</AssemblyVersion>
+    <FileVersion>$(CustomUnifiedVersion)</FileVersion>
+    <InformationalVersion>$(CustomUnifiedVersion) $(CustomInformationalVersionSuffix)</InformationalVersion>
 
   </PropertyGroup>
 

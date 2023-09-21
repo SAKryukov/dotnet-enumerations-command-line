@@ -1,0 +1,14 @@
+﻿<Project>
+ 
+  <PropertyGroup> <!-- customize:  -->
+    <CustomUnifiedVersion>0.1.0.0</CustomUnifiedVersion>
+    <!-- can be alpha, beta, RC1, RC2, etc.: -->
+    <CustomInformationalVersionSuffix>pre-alpha</CustomInformationalVersionSuffix>
+    <Copyright>Copyright © 2008-2023 Sergey A Kryukov</Copyright>
+    <Product>Enumerations</Product>
+    <Description>Enumerations that really enumerate + Command-line utility</Description>
+    <Company>SA</Company>
+    <AssemblyTitle>$(Product)</AssemblyTitle>
+  </PropertyGroup>
+
+</Project>
