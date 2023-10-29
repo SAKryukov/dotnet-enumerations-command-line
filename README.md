@@ -15,7 +15,7 @@ Covered topics:
 * [Human-readable Enumeration Meta-data](https://www.codeproject.com/Articles/136181/Human-readable-Enumeration-Meta-data)
 * [Enumeration-based Command Line Utility](https://www.codeproject.com/Articles/144349/Enumeration-based-Command-Line-Utility)
 * [Bitwise Enumeration Editor for PropertyGrid and Visual Studio](https://www.codeproject.com/Articles/809357/Bitwise-Enumeration-Editor-for-PropertyGrid-and-Vi)
-* Modernized .NET Enumerations and Command Line (under developement)
+* Modernized .NET Enumerations and Command Line (under development)
 
 ## Under development
 
