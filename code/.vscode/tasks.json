@@ -1,0 +1,25 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "incrementalBuild",
+			"type": "shell",
+			"group": "build",
+			"command": "dotnet build",
+			"presentation": {
+			  "reveal": "always",
+			  "panel": "shared"
+			}
+		},
+		{
+			"label": "Clean All",
+			"type": "process",
+			"command": "${workspaceFolder}/clear.cmd",
+			"problemMatcher": [],
+			"presentation": {
+				"reveal": "always",
+				"panel": "shared"
+			  }
+		},
+	]
+}
