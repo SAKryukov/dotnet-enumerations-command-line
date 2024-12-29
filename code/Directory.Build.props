@@ -1,5 +1,5 @@
 ﻿<Project>
-    <Import Project="$(SolutionDir)\Metadata.props"/>
+    <Import Project="$(SolutionDir)Metadata.props"/>
  
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
