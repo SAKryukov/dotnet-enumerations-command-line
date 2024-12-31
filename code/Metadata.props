@@ -1,6 +1,8 @@
 ﻿<Project>
  
   <PropertyGroup> <!-- customize:  -->
+
+    <TargetFramework>net5.0</TargetFramework>
     <CustomUnifiedVersion>0.1.0.0</CustomUnifiedVersion>
     <!-- can be alpha, beta, RC1, RC2, etc.: -->
     <CustomInformationalVersionSuffix>pre-alpha</CustomInformationalVersionSuffix>
@@ -9,6 +11,9 @@
     <Description>Enumerations that really enumerate + Command-line utility</Description>
     <Company>SA</Company>
     <AssemblyTitle>$(Product)</AssemblyTitle>
+
+    <RootNamespace>SA</RootNamespace>
+
   </PropertyGroup>
 
 </Project>
