@@ -6,11 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="..\CommandLine.Demo\Main\DefinitionSet.cs" Link="DefinitionSet.cs" />
+    <Compile Include="../CommandLine.Demo/Main/DefinitionSet.cs" Link="DefinitionSet.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Agnostic\Core\Agnostic.Core.csproj" />
+    <ProjectReference Include="$(SolutionDirectory)Agnostic/Core/Agnostic.Core.csproj" />
   </ItemGroup>
 
 </Project>

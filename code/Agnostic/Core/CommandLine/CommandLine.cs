@@ -30,7 +30,7 @@
   
     All user's command line errors are collected in UnrecognizedOptions, RepeatedFiles, RepeatedSwitches and RepeatedValues; no exceptions are thrown.
     
-    Copyright (C) 2004-2023 by Sergey A Kryukov
+    Copyright (C) 2004-2025 by Sergey A Kryukov
     http://www.SAKryukov.org
 */
 
@@ -189,7 +189,7 @@ namespace SA.Agnostic.Utilities {
         } //GetDefaultCommandLineParsingOptions
 
         static string[] ExtractCommandLine() {
-            string[] commandLine = System.Environment.GetCommandLineArgs();
+            string[] commandLine = Environment.GetCommandLineArgs();
             int len = commandLine.Length;
             if (len < 2) return Array.Empty<string>();
             string[] destination = new string[len - 1];
